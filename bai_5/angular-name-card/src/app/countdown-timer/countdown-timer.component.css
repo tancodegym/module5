@@ -1,0 +1,16 @@
+
+.count__down{
+  text-align: center;
+  background: linear-gradient(to right,dodgerblue,indianred);
+  /*background: radial-gradient(red, purple);*/
+}
+
+.count__down button{
+  margin: 0 20px;
+}
+.count__down span{
+  font-size: 50px;
+}
+.count__down p{
+  font-size: 30px;
+}

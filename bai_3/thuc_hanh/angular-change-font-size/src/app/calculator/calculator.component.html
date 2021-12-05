@@ -1,0 +1,29 @@
+
+<div class="text-center">
+  <h2>Calculator</h2>
+<div>
+  <input placeholder="Number 1" type="number" class="form-input"
+         [value]="first"
+         (change)=" onFirstChange($event.target.value)">
+  <select
+    class="form- input"
+    [value]="operator"
+    (change)="onSelectChange($event.target.value)">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+  </select>
+  <input placeholder="Number 2"  type="number" class="form-input"
+         [value]="second"
+         (change)="onSecondChange($event.target.value)">
+</div>
+<div>
+  <button class="form-input" (click)="calculate()">
+    Tính
+  </button>
+</div>
+<div class="output">
+  <span>Kết quả: </span> <span> {{output}}</span>
+</div>
+</div>

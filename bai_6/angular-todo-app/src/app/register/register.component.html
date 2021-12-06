@@ -1,0 +1,66 @@
+<div class="text-center"><h1>Registry User</h1></div>
+
+<form autocomplete="off" [formGroup]="userForm" (ngSubmit)="add()">
+  <div class="form-group form__user">
+    <label for="email">Email</label>
+    <input name="email" id="email" formControlName="email" type="text" class="form-control">
+    <div *ngIf="!email.valid && (email.dirty ||email.touched)">
+      <div style="color:red" [hidden]="!email.errors.required">Email is required</div>
+      <div style="color:red" [hidden]="!email.errors.pattern">Wrong format email ( Ex: abcde@gmail.com,...)</div>
+    </div>
+    <div [formGroup]="passwordGroup">
+      <label for="password">Password</label>
+      <input name="password" id="password" formControlName="password" type="text" class="form-control">
+      <div *ngIf="!password.valid && (password.dirty ||password.touched)">
+        <div style="color:red" [hidden]="!password.errors.required">Password is required</div>
+        <div style="color:red" [hidden]="!password.errors.minlength">Password min 6 character</div>
+      </div>
+      <label for="confirmPassword">Confirm Password</label>
+      <input name="confirmPassword" id="confirmPassword" formControlName="confirmPassword" type="text"
+             class="form-control">
+      <div *ngIf="!confirmPassword.valid && (confirmPassword.dirty ||confirmPassword.touched)">
+        <div style="color:red" [hidden]="!confirmPassword.errors.required">Password is required</div>
+        <div style="color:red" [hidden]="!confirmPassword.errors.minlength">Password min 6 character</div>
+      </div>
+      <div class="form-text " style="color: red" *ngIf="passwordGroup.hasError('passwordNotConfirm')">
+        Password is not confirm !
+      </div>
+    </div>
+    <br>
+    <label for="country">Country</label>
+    <select name="country" id="country" formControlName="country">
+      <option value="">Pick Country</option>
+      <option *ngFor="let c of countryList" [ngValue]="c.id">{{c.name}}</option>
+    </select>
+    <div *ngIf="!country.valid && (country.dirty ||country.touched)">
+      <div style="color:red" [hidden]="!country.errors.required">
+        Country is required
+      </div>
+    </div>
+    <br>
+    <label for="age">Age</label>
+    <input name="age" id="age" formControlName="age" type="number" class="form-control">
+    <div *ngIf="!age.valid && (age.dirty ||age.touched)">
+      <div style="color:red" [hidden]="!age.errors.required">Age is required</div>
+      <div style="color:red" [hidden]="!age.errors.min">Age must be greater than 18 !</div>
+    </div>
+    <label>Gender</label><br>
+    <input name="gender" type="radio" value="0">Female
+    <input name="gender" type="radio" value="1">Male
+    <input name="gender" type="radio" value="2">LGBT
+    <div *ngIf="!gender.valid && (gender.dirty ||gender.touched)">
+      <div style="color:red" [hidden]="!gender.errors.required">Gender is required</div>
+    </div>
+    <br>
+    <label for="phone">Phone</label>
+    <input name="phone" id="phone" formControlName="phone" type="text" class="form-control"><br>
+    <div *ngIf="!phone.valid && (phone.dirty ||phone.touched)">
+      <div style="color:red" [hidden]="!phone.errors.required">Phone is required</div>
+      <div style="color:red" [hidden]="!phone.errors.pattern">Wrong format (+84-XXX-XXX-XXX or +84-XXXX-XXX-XXX)</div>
+    </div>
+
+
+    <button class="text-center" [disabled]="!userForm.valid" type="submit" class="btn btn-primary">Registry</button>
+  </div>
+
+</form>

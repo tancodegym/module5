@@ -1,0 +1,20 @@
+<div class="text-center"><h1>Login</h1></div>
+
+<form autocomplete="off" [formGroup]="loginForm" (ngSubmit)="login()">
+  <div class="form-group form__login">
+    <label for="email">Email</label>
+    <input name="email" id="email" formControlName="email" type="text" class="form-control">
+    <div *ngIf="!email.valid && (email.dirty ||email.touched)">
+      <div style="color:red" [hidden]="!email.errors.required">Email is required</div>
+      <div style="color:red" [hidden]="!email.errors.pattern">Wrong format email ( Ex: abcde@gmail.com,...)</div>
+    </div>
+    <label for="password">Password</label>
+    <input name="password" id="password" formControlName="password" type="text" class="form-control">
+    <div *ngIf="!password.valid && (password.dirty ||password.touched)">
+      <div style="color:red" [hidden]="!password.errors.required">Password is required</div>
+      <div style="color:red" [hidden]="!password.errors.minlength">Password min 6 character</div>
+    </div>
+    <br>
+    <button  [disabled]="!loginForm.valid" type="submit" class="btn btn-primary">Login</button>
+  </div>
+</form>

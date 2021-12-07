@@ -45,9 +45,9 @@
       <div style="color:red" [hidden]="!age.errors.min">Age must be greater than 18 !</div>
     </div>
     <label>Gender</label><br>
-    <input name="gender" type="radio" value="0">Female
-    <input name="gender" type="radio" value="1">Male
-    <input name="gender" type="radio" value="2">LGBT
+    <input formControlName="gender" name="gender" type="radio" value="0">Female
+    <input formControlName="gender"  name="gender" type="radio" value="1">Male
+    <input formControlName="gender"  name="gender" type="radio" value="2">LGBT
     <div *ngIf="!gender.valid && (gender.dirty ||gender.touched)">
       <div style="color:red" [hidden]="!gender.errors.required">Gender is required</div>
     </div>

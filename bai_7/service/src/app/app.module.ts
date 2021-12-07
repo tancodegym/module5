@@ -9,6 +9,10 @@ import { YoutubePlayerComponent } from './youtube-player/youtube-player.componen
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { ProductCreateComponent } from './product/product-create/product-create.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { DictionaryComponent } from './dictionary/dictionary.component';
+import { WordDetailComponent } from './word-detail/word-detail.component';
+import { ProductEditComponent } from './product/product-edit/product-edit.component';
+import { ProductDeleteComponent } from './product/product-delete/product-delete.component';
 
 
 @NgModule({
@@ -18,7 +22,11 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     YoutubePlaylistComponent,
     YoutubePlayerComponent,
     ProductListComponent,
-    ProductCreateComponent
+    ProductCreateComponent,
+    DictionaryComponent,
+    WordDetailComponent,
+    ProductEditComponent,
+    ProductDeleteComponent
 
   ],
   imports: [

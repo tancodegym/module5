@@ -66,10 +66,8 @@
           </td>
           <td><input type="checkbox" class="customerId" value="{{cus.id}}"></td>
         </tr>
-
         </tbody>
       </table>
-
     </div>
     <div class="row">
       <div class="col-6">
@@ -96,8 +94,6 @@
   </div>
 </div>
 
-
-
 <!-- Modal Create -->
 <div class="modal fade" id="mdCreate" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -112,8 +108,6 @@
         <form [formGroup]="customerForm">
           <div>Customer Code</div>
           <input class="form-control" type="text" formControlName="code">
-          <div>
-          </div>
           <div>Customer Name</div>
           <input class="form-control" type="text" formControlName="name">
           <div>Customer Type</div>
@@ -129,14 +123,22 @@
           <input class="form-control" type="text" formControlName="phone">
           <div>Email</div>
           <input class="form-control" type="text" formControlName="email">
+          <div *ngIf="!email.valid && (email.dirty ||email.touched)">
+            <div style="color:red" [hidden]="!email.errors.required">Email is required</div>
+            <div style="color:red" [hidden]="!email.errors.pattern">Wrong format email ( Ex: abcde@gmail.com,...)</div>
+          </div>
           <div>Address</div>
-          <input class="form-control" type="text" formControlName="address">
+          <input class="form-control" type="text" formControlName="address"><br>
+          <div class="btnGroup">
+            <button type="button" class="btn btnEdit btn-secondary" data-dismiss="modal">Close</button>
+            <button (click)="createCustomer()" [disabled]="!customerForm.valid"  data-dismiss="modal" type="button"
+                    class="btnEdit btn btn-primary">Create</button>
+          </div>
         </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button (click)="createCustomer()" data-dismiss="modal" type="button" class="btn btn-primary">Create</button>
-      </div>
+<!--      <div class="modal-footer">-->
+<!--    -->
+<!--      </div>-->
     </div>
   </div>
 </div>
@@ -178,29 +180,45 @@
         <form [formGroup]="cusEditForm">
           <div>Customer Code</div>
           <input class="form-control" type="text" formControlName="code" [value]="cusEditForm.value.code">
+
           <div>Customer Name</div>
           <input class="form-control" type="text" formControlName="name" [value]="cusEditForm.value.name">
+
           <div>Customer Type</div>
           <select formControlName="type" class="form-control" [value]="cusEditForm.value.type">
             <option value="">--</option>
             <option *ngFor="let t of typeList" value="{{t}}">{{t.type}}</option>
           </select>
+
           <div>Date of Birth</div>
           <input class="form-control" type="date" formControlName="birthday" [value]="cusEditForm.value.birthday">
+
           <div>ID Card</div>
           <input class="form-control" type="text" formControlName="idCard" [value]="cusEditForm.value.idCard">
+
           <div>Phone Number</div>
           <input class="form-control" type="text" formControlName="phone" [value]="cusEditForm.value.phone">
+
           <div>Email</div>
           <input class="form-control" type="text" formControlName="email" [value]="cusEditForm.value.email">
+          <div *ngIf="!emailEdit.valid && (emailEdit.dirty ||emailEdit.touched)">
+            <div style="color:red" [hidden]="!emailEdit.errors.required">Email is required</div>
+            <div style="color:red" [hidden]="!emailEdit.errors.pattern">Wrong format email ( Ex: abcde@gmail.com,...)</div>
+          </div>
           <div>Address</div>
-          <input class="form-control" type="text" formControlName="address" [value]="cusEditForm.value.address">
+          <input class="form-control" type="text" formControlName="address" [value]="cusEditForm.value.address"><br>
+
+          <div class="btnGroup">
+          <button type="button" class="btn btnEdit btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" (click)="updateCustomer()" data-dismiss="modal" [disabled]="!cusEditForm.valid"
+                  class="btn btnEdit btn-primary">Edit</button>
+          </div>
         </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Edit</button>
-      </div>
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--        <button type="button" class="btn btn-primary">Edit</button>-->
+<!--      </div>-->
     </div>
   </div>
 </div>

@@ -14,13 +14,13 @@ export class CustomerComponent implements OnInit {
   customerList: Customer[] = [];
   customerForm: FormGroup = new FormGroup({
     id: new FormControl(''),
-    code: new FormControl('',[Validators.required,Validators.pattern('KH-//d{4}')]),
+    code: new FormControl('',[Validators.required,Validators.pattern('KH-\\d{4}')]),
     type: new FormControl(''),
     name: new FormControl(''),
     birthday: new FormControl(''),
     idCard: new FormControl(''),
     phone: new FormControl(''),
-    email: new FormControl(''),
+    email: new FormControl('',[Validators.required,Validators.pattern("[a-z]+[a-zA-Z0-9]+@[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+\\.*[a-zA-Z0-9]*)")]),
     address: new FormControl('')
   });
   cusEditForm: FormGroup = new FormGroup(
@@ -32,7 +32,7 @@ export class CustomerComponent implements OnInit {
       birthday: new FormControl(),
       idCard: new FormControl(),
       phone: new FormControl(),
-      email: new FormControl(),
+      email: new FormControl('',[Validators.required,Validators.pattern("[a-z]+[a-zA-Z0-9]+@[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+\\.*[a-zA-Z0-9]*)")]),
       address: new FormControl()
     }
   );
@@ -63,7 +63,6 @@ export class CustomerComponent implements OnInit {
 
   trackId(id: any) {
     this.idCus = Number(id);
-    alert(this.idCus);
     this.bindingEdit();
   }
 
@@ -71,7 +70,6 @@ export class CustomerComponent implements OnInit {
     this.customerService.deleteCustomer(this.idCus);
     this.idCus = 0;
   }
-
   bindingEdit() {
     let customer = this.customerService.findById(this.idCus);
     this.cusEditForm.value.id = customer.id;
@@ -102,5 +100,19 @@ export class CustomerComponent implements OnInit {
       }
     }
     return id;
+  }
+  get email() {
+    return this.customerForm.get('email');
+  }
+  get emailEdit() {
+    return this.cusEditForm.get('email');
+  }
+  updateCustomer() {
+    let cusEdit = this.cusEditForm.value;
+    this.customerService.deleteCustomer(this.idCus);
+    cusEdit.id = this.idCus;
+    this.idCus=0;
+    this.customerService.saveCustomer(cusEdit);
+
   }
 }

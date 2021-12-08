@@ -57,13 +57,9 @@ export class CustomerServiceService {
     return this.customerList.find(category => category.id === id);
   }
 
-  updateCategory(cus: Customer) {
-    for (let i = 0; i < this.customerList.length; i++) {
-      if (this.customerList[i].id === cus.id) {
-        this.customerList[i] = cus;
-      }
-    }
-  }
+  // update(cus: Customer) {
+  //   this.customerList[this.customerList.findIndex(c => c.id=cus.id)] = cus;
+  // }
   deleteCustomer(id: number) {
     this.customerList.splice(this.customerList.findIndex(cus=>cus.id===id),1);
   }

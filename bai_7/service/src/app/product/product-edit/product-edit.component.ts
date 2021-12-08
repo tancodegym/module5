@@ -16,7 +16,6 @@ export class ProductEditComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,
     private domSanitizer: DomSanitizer) { }
-
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       const id = paramMap.get('id');
@@ -31,7 +30,6 @@ export class ProductEditComponent implements OnInit {
      })
     });
   }
-
   submit() {
     this.product= this.productForm.value;
     this.productService.updateById(this.product);

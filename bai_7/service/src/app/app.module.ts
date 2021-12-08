@@ -6,13 +6,9 @@ import { AppComponent } from './app.component';
 import { TimelinesComponent } from './timelines/timelines.component';
 import { YoutubePlaylistComponent } from './youtube-playlist/youtube-playlist.component';
 import { YoutubePlayerComponent } from './youtube-player/youtube-player.component';
-import { ProductListComponent } from './product/product-list/product-list.component';
-import { ProductCreateComponent } from './product/product-create/product-create.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { DictionaryComponent } from './dictionary/dictionary.component';
 import { WordDetailComponent } from './word-detail/word-detail.component';
-import { ProductEditComponent } from './product/product-edit/product-edit.component';
-import { ProductDeleteComponent } from './product/product-delete/product-delete.component';
 
 
 @NgModule({
@@ -21,12 +17,8 @@ import { ProductDeleteComponent } from './product/product-delete/product-delete.
     TimelinesComponent,
     YoutubePlaylistComponent,
     YoutubePlayerComponent,
-    ProductListComponent,
-    ProductCreateComponent,
     DictionaryComponent,
-    WordDetailComponent,
-    ProductEditComponent,
-    ProductDeleteComponent
+    WordDetailComponent
 
   ],
   imports: [

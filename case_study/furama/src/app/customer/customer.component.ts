@@ -113,6 +113,5 @@ export class CustomerComponent implements OnInit {
     cusEdit.id = this.idCus;
     this.idCus=0;
     this.customerService.saveCustomer(cusEdit);
-
   }
 }

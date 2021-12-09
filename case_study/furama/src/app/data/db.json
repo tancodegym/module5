@@ -21,6 +21,93 @@
       "type": "Member"
     }
   ],
+  "positionList": [
+    {
+      "id": 1,
+      "name": "Receptionists"
+    },
+    {
+      "id": 2,
+      "name": "Staff"
+    },
+    {
+      "id": 3,
+      "name": "Expert"
+    },
+    {
+      "id": 4,
+      "name": "Monitor"
+    },
+    {
+      "id": 5,
+      "name": "Manager"
+    },
+    {
+      "id": 6,
+      "name": "President"
+    }
+  ],
+  "divisionList": [
+    {
+      "id": 1,
+      "name": "Sale-Marketing"
+    },
+    {
+      "id": 2,
+      "name": "Administrative"
+    },
+    {
+      "id": 3,
+      "name": "Service"
+    },
+    {
+      "id": 4,
+      "name": "Managerment"
+    }
+  ],
+  "employeeList": [
+    {
+      "id": 1,
+      "code": "NV-0001",
+      "name": "Nguyễn An",
+      "position": {
+        "id": 1,
+        "name": "Receptionists"
+      },
+      "education": {
+        "id": 1,
+        "name": "Intermediate"
+      },
+      "division": {
+        "id": 3,
+        "name": "Service"
+      },
+      "birthday": "2021-12-08",
+      "idCard": "201605423",
+      "salary": 5555,
+      "phone": "0947829245",
+      "email": "đâsda",
+      "address": "fasfasda"
+    }
+  ],
+  "educationList": [
+    {
+      "id": 1,
+      "name": "Intermediate"
+    },
+    {
+      "id": 2,
+      "name": "College"
+    },
+    {
+      "id": 3,
+      "name": "University"
+    },
+    {
+      "id": 4,
+      "name": "Postgraduate"
+    }
+  ],
   "customerList": [
     {
       "id": 1,
@@ -29,40 +116,26 @@
         "id": 1,
         "type": "Diamond"
       },
-      "name": "Lê An",
+      "name": "Lê Bình Bình",
       "birthday": "2000-02-02",
       "idCard": "201605626",
       "phone": "0947829245",
       "email": "tan@gmail.com",
-      "address": "Da Nang"
+      "address": "Da Nangvcxvxc"
     },
     {
       "id": 2,
-      "code": "KH-0005",
-      "type": {
-        "id": 4,
-        "type": "Silver"
-      },
-      "name": "fsdfsd",
-      "birthday": "2021-12-08",
-      "idCard": "dfsd",
-      "phone": "fsdfsdf",
-      "email": "sdsfsd@gmail.com",
-      "address": "sdfsdf"
-    },
-    {
-      "id": 3,
-      "code": "KH-0005",
+      "code": "KH-0001",
       "type": {
         "id": 1,
         "type": "Diamond"
       },
-      "name": "fsdfsd",
-      "birthday": "2021-12-09",
-      "idCard": "dfgdfgd",
-      "phone": "gfdg",
-      "email": "sfsdfsdfsd@gmail.com",
-      "address": "gfdgdfg"
+      "name": "Lê Bình",
+      "birthday": "2000-02-02",
+      "idCard": "201605626",
+      "phone": "0947829245",
+      "email": "tan@gmail.com",
+      "address": "Da Nangvcxvxc"
     }
   ]
 }

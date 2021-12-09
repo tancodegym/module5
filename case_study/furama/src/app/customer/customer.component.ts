@@ -1,10 +1,9 @@
-import {Component, DoCheck, OnInit} from '@angular/core';
+import { Component, DoCheck, OnInit} from '@angular/core';
 import {CustomerServiceService} from "../service/customer-service.service";
 import {Customer} from "../model/customer";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CustomerType} from "../model/customer-type";
 import {CustomerTypeService} from "../service/customer-type.service";
-import {RouterEntryPoint} from "@angular/compiler-cli/src/ngtsc/routing/src/route";
 import {Router} from "@angular/router";
 
 @Component({
@@ -14,15 +13,28 @@ import {Router} from "@angular/router";
 })
 export class CustomerComponent implements OnInit,DoCheck {
   customerList: Customer[] = [];
+  idCus: number;
+  typeList: CustomerType[];
+  // customerForm: FormGroup = new FormGroup({
+  //   id: new FormControl(''),
+  //   code: new FormControl('',[Validators.required,Validators.pattern('KH-\\d{4}')]),
+  //   type: new FormControl('',[Validators.required]),
+  //   name: new FormControl('',[Validators.required,Validators.pattern('([\\p{Lu}][\\p{Ll}]{1,8})(\\s([\\p{Lu}]|[\\p{Lu}][\\p{Ll}]{1,10})){0,5}$')]),
+  //   birthday: new FormControl('',[Validators.required,Validators.pattern("[\\d]{4}(-)\\+((0\\+[1-9]{1})\\|(1\\+[0-2]{1}))\\+(-)\\+(([1-2]{1}\\+[\\d]{1})\\|(0\\+[1-9]{1})\\|(3\\+[0-1]))")]),
+  //   idCard: new FormControl('',[Validators.required,Validators.pattern("\d{9}")]),
+  //   phone: new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
+  //   email: new FormControl('',[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+  //   address: new FormControl('',[Validators.required,Validators.pattern("([\p{Lu}][\p{Ll}]{1,8})(\s([\p{Lu}]\|[\p{Lu}][\p{Ll}]{1,10})){0,5}\$")])
+  // });
   customerForm: FormGroup = new FormGroup({
     id: new FormControl(''),
-    code: new FormControl('',[Validators.required,Validators.pattern('KH-\\d{4}')]),
+    code: new FormControl(''),
     type: new FormControl(''),
     name: new FormControl(''),
     birthday: new FormControl(''),
     idCard: new FormControl(''),
     phone: new FormControl(''),
-    email: new FormControl('',[Validators.required,Validators.pattern("[a-z]+[a-zA-Z0-9]+@[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+\\.*[a-zA-Z0-9]*)")]),
+    email: new FormControl(''),
     address: new FormControl('')
   });
   cusEditForm: FormGroup = new FormGroup(
@@ -38,8 +50,7 @@ export class CustomerComponent implements OnInit,DoCheck {
       address: new FormControl()
     }
   );
-  idCus: number;
-  typeList: CustomerType[];
+
   cusSearchForm: FormGroup = new FormGroup(
     {
       code: new FormControl(),
@@ -54,7 +65,8 @@ export class CustomerComponent implements OnInit,DoCheck {
   );
   constructor(
     private customerService: CustomerServiceService,
-    private typeService: CustomerTypeService
+    private typeService: CustomerTypeService,
+    private router: Router
   ) {
   }
 
@@ -70,12 +82,25 @@ export class CustomerComponent implements OnInit,DoCheck {
 
   createCustomer() {
     let customer = this.customerForm.value;
-    this.customerService.createCustomer(customer).subscribe();
+    this.customerService.createCustomer(customer).subscribe(next =>{
+      this.router.navigateByUrl("/employee").then(e => {
+        if (e) {
+          this.router.navigateByUrl("/customer")
+        }
+        // else {
+        //   alert("Navigation has failed!");
+        // }
+      } )}
+
+    );
+
+
+
   }
   ngDoCheck(): void {
-    this.customerService.getAll().subscribe(customers=>{
-      this.customerList= customers ;
-    });
+    // this.customerService.getAll().subscribe(customers=>{
+    //   this.customerList= customers ;
+    // });
   }
 
   trackId(id: any) {
@@ -83,33 +108,96 @@ export class CustomerComponent implements OnInit,DoCheck {
     this.bindingEdit();
   }
   deleteCustomer() {
-    this.customerService.deleteCustomer(this.idCus).subscribe();
+    this.customerService.deleteCustomer(this.idCus).subscribe(
+      next =>{
+      this.router.navigateByUrl("/employee").then(e => {
+        if (e) {
+          this.router.navigateByUrl("/customer")
+        }
+        // else {
+        //   alert("Navigation has failed!");
+        // }
+      } );
+    });
     this.idCus = 0;
+
   }
 
   bindingEdit() {
-    let customer = this.customerService.findById(this.idCus);
+    let customer = this.customerList.find(cus =>cus.id=this.idCus);
     this.cusEditForm.setValue(customer);
+    alert(this.cusEditForm.value.type.type);
   }
 
-  getId(){
-    let idList = new Array();
-    for(let i=0;i<this.customerList.length;i++){
-      idList.push(this.customerList[i].id);
-    }
-    idList.sort();
-    let id:number;
-    for(let i = 0; i<idList.length;i++){
-      if(i==idList.length-1){
-        id=idList.length;
-        break;
-      }
-      if((idList[i+1]-idList[i])>=2){
-        id=i+1;
-        break;
-      }
-    }
-    return id;
+
+  updateCustomer() {
+    let cusEdit = this.cusEditForm.value;
+    cusEdit.id = this.idCus;
+    this.customerService.updateCustomer(cusEdit).subscribe(
+      next =>{
+        this.router.navigateByUrl("/employee").then(e => {
+          if (e) {
+            this.router.navigateByUrl("/customer")
+          }
+          // else {
+          //   alert("Navigation has failed!");
+          // }
+        } );
+      });
+  }
+
+  search() {
+    console.log(this.cusSearchForm.value);
+  }
+
+  // ngAfterViewChecked(): void {
+  //   this.customerService.getAll().subscribe(customers=>{
+  //     this.customerList= customers ;
+  //   });
+  // }
+
+
+get id(){
+    return this.customerForm.get('id');
+}
+  get idEdit(){
+    return this.cusEditForm.get('id');
+  }
+  get code(){
+    return this.customerForm.get('code');
+  }
+  get codeEdit(){
+    return this.cusEditForm.get('code');
+  }
+  get type(){
+    return this.customerForm.get('type');
+  }
+  get typeEdit(){
+    return this.cusEditForm.get('type');
+  }
+  get name() {
+    return this.customerForm.get('name');
+  }
+  get nameEdit() {
+    return this.cusEditForm.get('name');
+  }
+  get birthday(){
+    return this.customerForm.get('birthday');
+  }
+  get birthdayEdit(){
+    return this.cusEditForm.get('birthday');
+  }
+  get idCard(){
+    return this.customerForm.get('idCard');
+  }
+  get idCardEdit(){
+    return this.cusEditForm.get('idCard');
+  }
+  get phone() {
+    return this.customerForm.get('phone');
+  }
+  get phoneEdit() {
+    return this.cusEditForm.get('phone');
   }
   get email() {
     return this.customerForm.get('email');
@@ -117,16 +205,10 @@ export class CustomerComponent implements OnInit,DoCheck {
   get emailEdit() {
     return this.cusEditForm.get('email');
   }
-  updateCustomer() {
-    let cusEdit = this.cusEditForm.value;
-    this.customerService. deleteCustomer(this.idCus);
-    cusEdit.id = this.idCus;
-    this.idCus=0;
-    this.customerService.saveCustomer(cusEdit);
+  get address() {
+    return this.customerForm.get('address');
   }
-
-
-  search() {
-    console.log(this.cusSearchForm.value);
+  get addressEdit() {
+    return this.cusEditForm.get('address');
   }
 }

@@ -3,6 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {MenuComponent} from "./menu/menu.component";
 import {CustomerComponent} from "./customer/customer.component";
 import {HomeComponent} from "./home/home.component";
+import {EmployeeComponent} from "./employee/employee.component";
 
 
 
@@ -19,7 +20,12 @@ const routes: Routes = [
       path: 'customer',
       component: CustomerComponent
       // loadChildren: () => import('./customer/customer.module').then(module => module.CustomerModule)
-    }
+    },
+      {
+        path: 'employee',
+        component: EmployeeComponent
+        // loadChildren: () => import('./customer/customer.module').then(module => module.CustomerModule)
+      }
      ]
   }
 

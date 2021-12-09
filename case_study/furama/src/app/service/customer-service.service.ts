@@ -10,41 +10,6 @@ const API_URL = `${environment.apiUrl}`;
   providedIn: 'root'
 })
 export class CustomerServiceService {
-  customerList: Customer[] = [
-    {
-      id:1,
-  code:'KH-0001',
-  type: {id:1,type:'Diamond'},
-  name:'Lê An',
-  birthday:'2000-02-02',
-  idCard:'201605626',
-  phone:'0947829245',
-  email:'tan@gmail.com',
-  address:'Da Nang',
-    },
-    {
-      id:2,
-      code:'KH-0002',
-      type: {id:3,type:'Gold'},
-      name:'Trần Thị Bê',
-      birthday:'2000-02-02',
-      idCard:'201605626',
-      phone:'0947829245',
-      email:'tan@gmail.com',
-      address:'Da Nang',
-    },
-    {
-      id:4,
-      code:'KH-0003',
-      type: {id:3,type:'Member'},
-      name:'Trần Văn Cê',
-      birthday:'2000-02-02',
-      idCard:'201605626',
-      phone:'0947829245',
-      email:'tan@gmail.com',
-      address:'Da Nang',
-    },
-    ]
 
   constructor(private http: HttpClient) {
   }
@@ -55,16 +20,15 @@ export class CustomerServiceService {
     return this.http.post<void>(API_URL+ '/customerList',customer);
   }
 
-  saveCustomer(customer) {
-    this.customerList.push(customer);
+    updateCustomer(customer:Customer):Observable<void>{
+    return this.http.patch<void>(API_URL+'/customerList'+'/'+customer.id,customer);
   }
 
   findById(id: number) {
-    return this.customerList.find(customer => customer.id === id);
+    return this.http.get<Customer>(API_URL+'/customerList/'+id);
   }
 
   deleteCustomer(id: number) {
     return this.http.delete<void>(API_URL+'/customerList'+'/'+id);
-    // this.customerList.splice(this.customerList.findIndex(customer=>customer.id===id),1);
   }
 }

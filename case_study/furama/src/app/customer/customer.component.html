@@ -108,27 +108,54 @@
         <form [formGroup]="customerForm">
           <div>Customer Code</div>
           <input class="form-control" type="text" formControlName="code">
+<!--          <div *ngIf="!code.valid && (code.dirty ||code.touched)">-->
+<!--            <div style="color:red" [hidden]="!code.errors.required">Code is required</div>-->
+<!--            <div style="color:red" [hidden]="!code.errors.pattern">Wrong format Code ( Ex: KH-XXXX)</div>-->
+<!--          </div>-->
           <div>Customer Name</div>
           <input class="form-control" type="text" formControlName="name">
+<!--          <div *ngIf="!name.valid && (name.dirty ||name.touched)">-->
+<!--            <div style="color:red" [hidden]="!name.errors.required">Name is required</div>-->
+<!--            <div style="color:red" [hidden]="!name.errors.pattern">Wrong format Name ( Ex: Nguyễn Văn An)</div>-->
+<!--          </div>-->
           <div>Customer Type</div>
           <select formControlName="type" class="form-control">
             <option value="">--</option>
             <option *ngFor="let t of typeList" [ngValue]="t">{{t.type}}</option>
           </select>
+<!--          <div *ngIf="!type.valid && (type.dirty ||type.touched)">-->
+<!--            <div style="color:red" [hidden]="!type.errors.required">Type is required</div>-->
+<!--          </div>-->
           <div>Date of Birth</div>
           <input class="form-control" type="date" formControlName="birthday">
+<!--          <div *ngIf="!birthday.valid && (birthday.dirty ||birthday.touched)">-->
+<!--            <div style="color:red" [hidden]="!birthday.errors.required">Date of Birth is required</div>-->
+<!--            <div style="color:red" [hidden]="!birthday.errors.pattern">Wrong format Date ( Ex: dd-mm-yyyy)</div>-->
+<!--          </div>-->
           <div>ID Card</div>
           <input class="form-control" type="text" formControlName="idCard">
+<!--          <div *ngIf="!idCard.valid && (idCard.dirty ||idCard.touched)">-->
+<!--            <div style="color:red" [hidden]="!idCard.errors.required">ID Card is required</div>-->
+<!--            <div style="color:red" [hidden]="!idCard.errors.pattern">Wrong format Id Card ( Ex: XXX-XXX-XXX)</div>-->
+<!--          </div>-->
           <div>Phone Number</div>
           <input class="form-control" type="text" formControlName="phone">
+<!--          <div *ngIf="!phone.valid && (phone.dirty ||phone.touched)">-->
+<!--            <div style="color:red" [hidden]="!phone.errors.required">Phone Number is required</div>-->
+<!--            <div style="color:red" [hidden]="!phone.errors.pattern">Wrong format Number Phone ( Ex: +84-XXX-XXX-XXX)</div>-->
+<!--          </div>-->
           <div>Email</div>
           <input class="form-control" type="text" formControlName="email">
-          <div *ngIf="!email.valid && (email.dirty ||email.touched)">
-            <div style="color:red" [hidden]="!email.errors.required">Email is required</div>
-            <div style="color:red" [hidden]="!email.errors.pattern">Wrong format email ( Ex: abcde@gmail.com,...)</div>
-          </div>
+<!--          <div *ngIf="!email.valid && (email.dirty ||email.touched)">-->
+<!--            <div style="color:red" [hidden]="!email.errors.required">Email is required</div>-->
+<!--            <div style="color:red" [hidden]="!email.errors.pattern">Wrong format email ( Ex: abcde@gmail.com,...)</div>-->
+<!--          </div>-->
           <div>Address</div>
           <input class="form-control" type="text" formControlName="address"><br>
+<!--          <div *ngIf="!address.valid && (address.dirty ||address.touched)">-->
+<!--            <div style="color:red" [hidden]="!address.errors.required">Address is required</div>-->
+<!--            <div style="color:red" [hidden]="!address.errors.pattern">Wrong format address</div>-->
+<!--          </div>-->
           <div class="btnGroup">
             <button type="button" class="btn btnEdit btn-secondary" data-dismiss="modal">Close</button>
             <button (click)="createCustomer()" [disabled]="!customerForm.valid"  data-dismiss="modal" type="button"
@@ -201,10 +228,10 @@
 
           <div>Email</div>
           <input class="form-control" type="text" formControlName="email" >
-          <div *ngIf="!emailEdit.valid && (emailEdit.dirty ||emailEdit.touched)">
-            <div style="color:red" [hidden]="!emailEdit.errors.required">Email is required</div>
-            <div style="color:red" [hidden]="!emailEdit.errors.pattern">Wrong format email ( Ex: abcde@gmail.com,...)</div>
-          </div>
+<!--          <div *ngIf="!emailEdit.valid && (emailEdit.dirty ||emailEdit.touched)">-->
+<!--            <div style="color:red" [hidden]="!emailEdit.errors.required">Email is required</div>-->
+<!--            <div style="color:red" [hidden]="!emailEdit.errors.pattern">Wrong format email ( Ex: abcde@gmail.com,...)</div>-->
+<!--          </div>-->
           <div>Address</div>
           <input class="form-control" type="text" formControlName="address" ><br>
 

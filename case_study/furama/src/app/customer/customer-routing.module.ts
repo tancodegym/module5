@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: 'list',
     component: CustomerComponent
-  },
+  }
   // {
   //   path: 'create',
   //   component: ProductCreateComponent

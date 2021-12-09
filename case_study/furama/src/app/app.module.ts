@@ -7,6 +7,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CustomerModule} from "./customer/customer.module";
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    CustomerModule
+    CustomerModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

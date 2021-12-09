@@ -1,0 +1,68 @@
+{
+  "typeList": [
+    {
+      "id": 1,
+      "type": "Diamond"
+    },
+    {
+      "id": 2,
+      "type": "Platinium"
+    },
+    {
+      "id": 3,
+      "type": "Gold"
+    },
+    {
+      "id": 4,
+      "type": "Silver"
+    },
+    {
+      "id": 5,
+      "type": "Member"
+    }
+  ],
+  "customerList": [
+    {
+      "id": 1,
+      "code": "KH-0001",
+      "type": {
+        "id": 1,
+        "type": "Diamond"
+      },
+      "name": "Lê An",
+      "birthday": "2000-02-02",
+      "idCard": "201605626",
+      "phone": "0947829245",
+      "email": "tan@gmail.com",
+      "address": "Da Nang"
+    },
+    {
+      "id": 2,
+      "code": "KH-0005",
+      "type": {
+        "id": 4,
+        "type": "Silver"
+      },
+      "name": "fsdfsd",
+      "birthday": "2021-12-08",
+      "idCard": "dfsd",
+      "phone": "fsdfsdf",
+      "email": "sdsfsd@gmail.com",
+      "address": "sdfsdf"
+    },
+    {
+      "id": 3,
+      "code": "KH-0005",
+      "type": {
+        "id": 1,
+        "type": "Diamond"
+      },
+      "name": "fsdfsd",
+      "birthday": "2021-12-09",
+      "idCard": "dfgdfgd",
+      "phone": "gfdg",
+      "email": "sfsdfsdfsd@gmail.com",
+      "address": "gfdgdfg"
+    }
+  ]
+}

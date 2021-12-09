@@ -1,16 +1,18 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, DoCheck, OnInit} from '@angular/core';
 import {CustomerServiceService} from "../service/customer-service.service";
 import {Customer} from "../model/customer";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CustomerType} from "../model/customer-type";
 import {CustomerTypeService} from "../service/customer-type.service";
+import {RouterEntryPoint} from "@angular/compiler-cli/src/ngtsc/routing/src/route";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.css']
 })
-export class CustomerComponent implements OnInit {
+export class CustomerComponent implements OnInit,DoCheck {
   customerList: Customer[] = [];
   customerForm: FormGroup = new FormGroup({
     id: new FormControl(''),
@@ -38,7 +40,18 @@ export class CustomerComponent implements OnInit {
   );
   idCus: number;
   typeList: CustomerType[];
-
+  cusSearchForm: FormGroup = new FormGroup(
+    {
+      code: new FormControl(),
+      type: new FormControl(),
+      name: new FormControl(),
+      birthday: new FormControl(),
+      idCard: new FormControl(),
+      phone: new FormControl(),
+      email: new FormControl(),
+      address: new FormControl()
+    }
+  );
   constructor(
     private customerService: CustomerServiceService,
     private typeService: CustomerTypeService
@@ -46,42 +59,39 @@ export class CustomerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAll();
-    this.typeList = this.typeService.getAll();
-  }
-
-
-  getAll() {
-    this.customerList = this.customerService.getAll();
+    // this.getAll();
+    this.typeService.getAll().subscribe(typies => {
+      this.typeList = typies;
+    });
+    this.customerService.getAll().subscribe(customers=>{
+        this.customerList= customers ;
+    });
   }
 
   createCustomer() {
     let customer = this.customerForm.value;
-    customer.id=this.customerList.length;
-    this.customerService.saveCustomer(customer);
+    this.customerService.createCustomer(customer).subscribe();
+  }
+  ngDoCheck(): void {
+    this.customerService.getAll().subscribe(customers=>{
+      this.customerList= customers ;
+    });
   }
 
   trackId(id: any) {
     this.idCus = Number(id);
     this.bindingEdit();
   }
-
   deleteCustomer() {
-    this.customerService.deleteCustomer(this.idCus);
+    this.customerService.deleteCustomer(this.idCus).subscribe();
     this.idCus = 0;
   }
+
   bindingEdit() {
     let customer = this.customerService.findById(this.idCus);
-    this.cusEditForm.value.id = customer.id;
-    this.cusEditForm.value.code = customer.code;
-    this.cusEditForm.value.type = customer.type;
-    this.cusEditForm.value.name = customer.name;
-    this.cusEditForm.value.birthday = customer.birthday;
-    this.cusEditForm.value.idCard = customer.idCard;
-    this.cusEditForm.value.phone = customer.phone;
-    this.cusEditForm.value.email = customer.email;
-    this.cusEditForm.value.address = customer.address;
+    this.cusEditForm.setValue(customer);
   }
+
   getId(){
     let idList = new Array();
     for(let i=0;i<this.customerList.length;i++){
@@ -109,9 +119,14 @@ export class CustomerComponent implements OnInit {
   }
   updateCustomer() {
     let cusEdit = this.cusEditForm.value;
-    this.customerService.deleteCustomer(this.idCus);
+    this.customerService. deleteCustomer(this.idCus);
     cusEdit.id = this.idCus;
     this.idCus=0;
     this.customerService.saveCustomer(cusEdit);
+  }
+
+
+  search() {
+    console.log(this.cusSearchForm.value);
   }
 }

@@ -9,6 +9,8 @@ import { YoutubePlayerComponent } from './youtube-player/youtube-player.componen
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { DictionaryComponent } from './dictionary/dictionary.component';
 import { WordDetailComponent } from './word-detail/word-detail.component';
+import {SharedModule} from "./shared/shared.module";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { WordDetailComponent } from './word-detail/word-detail.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

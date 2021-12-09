@@ -15,7 +15,7 @@
         <a class="nav-link">
           <!-- Button trigger modal Create New Customer -->
           <button type="button" class="btn btn-outline-primary"
-                  data-toggle="modal" data-target="#modalSearch">Search <i class="fas fa-search"></i>
+                  data-toggle="modal" data-target="#mdSearch">Search <i class="fas fa-search"></i>
           </button>
         </a>
       </div>
@@ -113,7 +113,7 @@
           <div>Customer Type</div>
           <select formControlName="type" class="form-control">
             <option value="">--</option>
-            <option *ngFor="let t of typeList" value="{{t}}">{{t.type}}</option>
+            <option *ngFor="let t of typeList" [ngValue]="t">{{t.type}}</option>
           </select>
           <div>Date of Birth</div>
           <input class="form-control" type="date" formControlName="birthday">
@@ -179,34 +179,34 @@
       <div class="modal-body">
         <form [formGroup]="cusEditForm">
           <div>Customer Code</div>
-          <input class="form-control" type="text" formControlName="code" [value]="cusEditForm.value.code">
+          <input class="form-control" type="text" formControlName="code" >
 
           <div>Customer Name</div>
-          <input class="form-control" type="text" formControlName="name" [value]="cusEditForm.value.name">
+          <input class="form-control" type="text" formControlName="name" >
 
           <div>Customer Type</div>
-          <select formControlName="type" class="form-control" [value]="cusEditForm.value.type">
+          <select formControlName="type" class="form-control" >
             <option value="">--</option>
-            <option *ngFor="let t of typeList" value="{{t}}">{{t.type}}</option>
+            <option *ngFor="let t of typeList" [ngValue]="t">{{t.type}}</option>
           </select>
 
           <div>Date of Birth</div>
-          <input class="form-control" type="date" formControlName="birthday" [value]="cusEditForm.value.birthday">
+          <input class="form-control" type="date" formControlName="birthday" >
 
           <div>ID Card</div>
-          <input class="form-control" type="text" formControlName="idCard" [value]="cusEditForm.value.idCard">
+          <input class="form-control" type="text" formControlName="idCard" >
 
           <div>Phone Number</div>
-          <input class="form-control" type="text" formControlName="phone" [value]="cusEditForm.value.phone">
+          <input class="form-control" type="text" formControlName="phone" >
 
           <div>Email</div>
-          <input class="form-control" type="text" formControlName="email" [value]="cusEditForm.value.email">
+          <input class="form-control" type="text" formControlName="email" >
           <div *ngIf="!emailEdit.valid && (emailEdit.dirty ||emailEdit.touched)">
             <div style="color:red" [hidden]="!emailEdit.errors.required">Email is required</div>
             <div style="color:red" [hidden]="!emailEdit.errors.pattern">Wrong format email ( Ex: abcde@gmail.com,...)</div>
           </div>
           <div>Address</div>
-          <input class="form-control" type="text" formControlName="address" [value]="cusEditForm.value.address"><br>
+          <input class="form-control" type="text" formControlName="address" ><br>
 
           <div class="btnGroup">
           <button type="button" class="btn btnEdit btn-secondary" data-dismiss="modal">Close</button>
@@ -219,6 +219,59 @@
 <!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
 <!--        <button type="button" class="btn btn-primary">Edit</button>-->
 <!--      </div>-->
+    </div>
+  </div>
+</div>
+
+<!-- Modal Search-->
+<div class="modal fade" id="mdSearch" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="color: #b6d4fe">Find Customer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="cusSearchForm">
+          <div>Customer Code</div>
+          <input class="form-control" type="text" formControlName="code" >
+
+          <div>Customer Name</div>
+          <input class="form-control" type="text" formControlName="name" >
+
+          <div>Customer Type</div>
+          <select formControlName="type" class="form-control" >
+            <option value="">--</option>
+            <option *ngFor="let t of typeList" [ngValue]="t">{{t.type}}</option>
+          </select>
+
+          <div>Date of Birth</div>
+          <input class="form-control" type="date" formControlName="birthday" >
+
+          <div>ID Card</div>
+          <input class="form-control" type="text" formControlName="idCard" >
+
+          <div>Phone Number</div>
+          <input class="form-control" type="text" formControlName="phone" >
+
+          <div>Email</div>
+          <input class="form-control" type="text" formControlName="email" >
+          <div>Address</div>
+          <input class="form-control" type="text" formControlName="address" ><br>
+
+          <div class="btnGroup">
+            <button type="button" class="btn btnEdit btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" (click)="search()" data-dismiss="modal"
+                    class="btn btnEdit btn-primary">Find</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
     </div>
   </div>
 </div>

@@ -2,7 +2,10 @@ import {Injectable} from '@angular/core';
 import {Category} from "../../../../../bai_7/service/src/app/model/category";
 import {Customer} from "../model/customer";
 import {CustomerType} from "../model/customer-type";
-
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {environment} from "../../environments/environment";
+const API_URL = `${environment.apiUrl}`;
 @Injectable({
   providedIn: 'root'
 })
@@ -43,10 +46,13 @@ export class CustomerServiceService {
     },
     ]
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
-  getAll(){
-    return this.customerList;
+  getAll(): Observable<Customer[]> {
+    return this.http.get<Customer[]>(API_URL + '/customerList');
+  }
+  createCustomer(customer):Observable<void>{
+    return this.http.post<void>(API_URL+ '/customerList',customer);
   }
 
   saveCustomer(customer) {
@@ -54,13 +60,11 @@ export class CustomerServiceService {
   }
 
   findById(id: number) {
-    return this.customerList.find(category => category.id === id);
+    return this.customerList.find(customer => customer.id === id);
   }
 
-  // update(cus: Customer) {
-  //   this.customerList[this.customerList.findIndex(c => c.id=cus.id)] = cus;
-  // }
   deleteCustomer(id: number) {
-    this.customerList.splice(this.customerList.findIndex(cus=>cus.id===id),1);
+    return this.http.delete<void>(API_URL+'/customerList'+'/'+id);
+    // this.customerList.splice(this.customerList.findIndex(customer=>customer.id===id),1);
   }
 }

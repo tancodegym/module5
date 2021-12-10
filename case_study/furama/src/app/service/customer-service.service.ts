@@ -31,4 +31,18 @@ export class CustomerServiceService {
   deleteCustomer(id: number) {
     return this.http.delete<void>(API_URL+'/customerList'+'/'+id);
   }
+
+  search(customerSearch: Customer): Observable<Customer[]> {
+    console.log(customerSearch.type.type);
+    return this.http.get<Customer[]>(
+      API_URL+'/customerList'+'?'
+      +'name_like='+customerSearch.name
+      + '&code_like='+customerSearch.code
+      +'&type.id='+customerSearch.type.id
+      +'&birthday_like='+customerSearch.birthday
+      +'&phone_like='+customerSearch.phone
+      +'&phone_like='+customerSearch.phone
+
+    );
+  }
 }

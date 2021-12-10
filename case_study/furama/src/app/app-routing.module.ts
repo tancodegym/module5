@@ -4,6 +4,7 @@ import {MenuComponent} from "./menu/menu.component";
 import {CustomerComponent} from "./customer/customer.component";
 import {HomeComponent} from "./home/home.component";
 import {EmployeeComponent} from "./employee/employee.component";
+import {OfficeComponent} from "./office/office.component";
 
 
 
@@ -24,6 +25,11 @@ const routes: Routes = [
       {
         path: 'employee',
         component: EmployeeComponent
+        // loadChildren: () => import('./customer/customer.module').then(module => module.CustomerModule)
+      },
+      {
+        path: 'service',
+        component: OfficeComponent
         // loadChildren: () => import('./customer/customer.module').then(module => module.CustomerModule)
       }
      ]

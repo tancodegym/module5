@@ -15,6 +15,7 @@ export class CustomerComponent implements OnInit,DoCheck {
   customerList: Customer[] = [];
   idCus: number;
   typeList: CustomerType[];
+  p:number =1;
   // customerForm: FormGroup = new FormGroup({
   //   id: new FormControl(''),
   //   code: new FormControl('',[Validators.required,Validators.pattern('KH-\\d{4}')]),
@@ -63,6 +64,7 @@ export class CustomerComponent implements OnInit,DoCheck {
       address: new FormControl()
     }
   );
+  customerSearch:Customer;
   constructor(
     private customerService: CustomerServiceService,
     private typeService: CustomerTypeService,
@@ -122,11 +124,15 @@ export class CustomerComponent implements OnInit,DoCheck {
     this.idCus = 0;
 
   }
-
+  customer:Customer;
   bindingEdit() {
-    let customer = this.customerList.find(cus =>cus.id=this.idCus);
-    this.cusEditForm.setValue(customer);
-    alert(this.cusEditForm.value.type.type);
+   for(let i=0;i<this.customerList.length;i++){
+     if(this.idCus===this.customerList[i].id){
+       this.customer=this.customerList[i];
+     }
+   }
+    this.cusEditForm.setValue(this.customer);
+
   }
 
 
@@ -147,7 +153,11 @@ export class CustomerComponent implements OnInit,DoCheck {
   }
 
   search() {
-    console.log(this.cusSearchForm.value);
+    this.customerSearch = this.cusSearchForm.value;
+    this.customerService.search(this.customerSearch).subscribe( customers=>{
+      this.customerList= customers ;
+      }
+    )
   }
 
   // ngAfterViewChecked(): void {
@@ -155,6 +165,9 @@ export class CustomerComponent implements OnInit,DoCheck {
   //     this.customerList= customers ;
   //   });
   // }
+  compareCustomerType(c1: CustomerType, c2:CustomerType ): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
+  }
 
 
 get id(){

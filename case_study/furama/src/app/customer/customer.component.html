@@ -40,7 +40,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let cus of customerList;index as i">
+        <tr *ngFor="let cus of customerList | paginate: { itemsPerPage: 1, currentPage: p };index as i">
           <td>{{cus.id}}</td>
           <td>{{cus.code}}</td>
           <td>{{cus.name}}</td>
@@ -93,7 +93,8 @@
     </div>
   </div>
 </div>
-
+<!--buton Paging-->
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
 <!-- Modal Create -->
 <div class="modal fade" id="mdCreate" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -212,9 +213,9 @@
           <input class="form-control" type="text" formControlName="name" >
 
           <div>Customer Type</div>
-          <select formControlName="type" class="form-control" >
-            <option value="">--</option>
-            <option *ngFor="let t of typeList" [ngValue]="t">{{t.type}}</option>
+          <select [compareWith]="compareCustomerType" formControlName="type" class="form-control" >
+            <option value="" >--</option>
+            <option *ngFor="let t of typeList" [ngValue]="t" >{{t.type}}</option>
           </select>
 
           <div>Date of Birth</div>
@@ -275,7 +276,7 @@
           </select>
 
           <div>Date of Birth</div>
-          <input class="form-control" type="date" formControlName="birthday" >
+          <input class="form-control" type="text" formControlName="birthday" >
 
           <div>ID Card</div>
           <input class="form-control" type="text" formControlName="idCard" >
@@ -294,10 +295,6 @@
                     class="btn btnEdit btn-primary">Find</button>
           </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
       </div>
     </div>
   </div>

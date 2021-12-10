@@ -21,6 +21,23 @@
       "type": "Member"
     }
   ],
+  "rentTypeList": [
+    {
+      "id": 1,
+      "name": "Villa",
+      "price": 500000
+    },
+    {
+      "id": 2,
+      "name": "House",
+      "price": 300000
+    },
+    {
+      "id": 3,
+      "name": "Room",
+      "price": 100000
+    }
+  ],
   "positionList": [
     {
       "id": 1,
@@ -88,6 +105,75 @@
       "phone": "0947829245",
       "email": "đâsda",
       "address": "fasfasda"
+    },
+    {
+      "id": 2,
+      "code": "NV-0002",
+      "name": "Nguyễn Bình",
+      "birthday": "2021-12-08",
+      "salary": 5555,
+      "phone": "0947829245",
+      "idCard": "201605423",
+      "email": "đâsda",
+      "address": "fasfasda",
+      "position": {
+        "id": 2,
+        "name": "Staff"
+      },
+      "division": {
+        "id": 1,
+        "name": "Sale-Marketing"
+      },
+      "education": {
+        "id": 1,
+        "name": "Intermediate"
+      }
+    },
+    {
+      "id": 4,
+      "code": "NV-0001",
+      "name": "Nguyễn An",
+      "birthday": "2021-12-08",
+      "salary": 5555,
+      "phone": "0947829245",
+      "idCard": "201605423",
+      "email": "đâsda",
+      "address": "fasfasda423423",
+      "position": {
+        "id": 4,
+        "name": "Monitor"
+      },
+      "division": {
+        "id": 3,
+        "name": "Service"
+      },
+      "education": {
+        "id": 3,
+        "name": "University"
+      }
+    },
+    {
+      "id": 5,
+      "code": "ád",
+      "name": "ádasdas",
+      "birthday": "2021-12-02",
+      "salary": 24,
+      "phone": "234234",
+      "idCard": "234234",
+      "email": "234",
+      "address": "23423",
+      "position": {
+        "id": 1,
+        "name": "Receptionists"
+      },
+      "division": {
+        "id": 2,
+        "name": "Administrative"
+      },
+      "education": {
+        "id": 3,
+        "name": "University"
+      }
     }
   ],
   "educationList": [
@@ -108,13 +194,60 @@
       "name": "Postgraduate"
     }
   ],
+  "serviceList": [
+    {
+      "id": 5,
+      "code": "123",
+      "name": "12312",
+      "area": 3112,
+      "numberFloor": 3123,
+      "maxPeople": "123123",
+      "cost": "123",
+      "rentType": {
+        "id": 1,
+        "name": "Villa",
+        "price": 500000
+      },
+      "status": "0"
+    },
+    {
+      "id": 6,
+      "code": "",
+      "name": "",
+      "area": "",
+      "numberFloor": "",
+      "maxPeople": "",
+      "cost": "",
+      "rentType": {
+        "id": 3,
+        "name": "Room",
+        "price": 100000
+      },
+      "status": "1"
+    },
+    {
+      "id": 7,
+      "code": "",
+      "name": "",
+      "area": "",
+      "numberFloor": "",
+      "maxPeople": "",
+      "cost": "",
+      "rentType": {
+        "id": 2,
+        "name": "House",
+        "price": 300000
+      },
+      "status": ""
+    }
+  ],
   "customerList": [
     {
       "id": 1,
       "code": "KH-0001",
       "type": {
-        "id": 1,
-        "type": "Diamond"
+        "id": 3,
+        "type": "Gold"
       },
       "name": "Lê Bình Bình",
       "birthday": "2000-02-02",
@@ -136,6 +269,20 @@
       "phone": "0947829245",
       "email": "tan@gmail.com",
       "address": "Da Nangvcxvxc"
+    },
+    {
+      "id": 3,
+      "code": "đâs",
+      "type": {
+        "id": 5,
+        "type": "Member"
+      },
+      "name": "ađâs",
+      "birthday": "2021-12-15",
+      "idCard": "đâs",
+      "phone": "sadas",
+      "email": "asdasd@gmail.com",
+      "address": "đâs"
     }
   ]
 }

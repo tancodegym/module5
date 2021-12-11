@@ -9,8 +9,6 @@ import {ContractComponent} from "./contract/contract.component";
 import {ContractDetailComponent} from "./contract-detail/contract-detail.component";
 import {CustomerUsingComponent} from "./customer-using/customer-using.component";
 
-
-
 const routes: Routes = [
   {
     path: '',

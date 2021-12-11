@@ -80,11 +80,10 @@
           </thead>
           <tbody>
           <tr *ngFor="let attachDetail of attachDetailList; index as i">
-            <td scope="row">{{i}}</td>
+            <td scope="row">{{i+1}}</td>
             <td>{{attachDetail.attachService.name}}</td>
             <td>{{attachDetail.quantity}}</td>
             <td>{{attachDetail.attachService.price}}</td>
-            <td></td>
           </tr>
           </tbody>
         </table>

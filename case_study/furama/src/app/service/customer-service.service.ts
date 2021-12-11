@@ -14,7 +14,7 @@ export class CustomerServiceService {
   constructor(private http: HttpClient) {
   }
   getAll(): Observable<Customer[]> {
-    return this.http.get<Customer[]>(API_URL + '/customerList');
+    return this.http.get<Customer[]>(API_URL + '/customerList?_sort=name&_order=asc');
   }
   createCustomer(customer):Observable<void>{
     return this.http.post<void>(API_URL+ '/customerList',customer);

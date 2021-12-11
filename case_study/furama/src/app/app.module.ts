@@ -39,7 +39,8 @@ import {CustomerUsingModule} from "./customer-using/customer-using.module";
     NgxPaginationModule,
     ContractModule,
     ContractDetailModule,
-    CustomerUsingModule
+    CustomerUsingModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

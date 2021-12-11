@@ -397,6 +397,76 @@
         "status": 1
       },
       "quantity": 5
+    },
+    {
+      "id": 2,
+      "contract": {
+        "id": 4,
+        "customer": {
+          "id": 1,
+          "code": "KH-0001",
+          "type": {
+            "id": 3,
+            "type": "Gold"
+          },
+          "name": "Nguyễn Hoàng Thắng",
+          "birthday": "2000-02-02",
+          "idCard": "201605626",
+          "phone": "0947829245",
+          "email": "tan@gmail.com",
+          "address": "Da Nangvcxvxc"
+        },
+        "employee": {
+          "id": 4,
+          "code": "NV-0001",
+          "name": "Nguyễn An",
+          "birthday": "2021-12-08",
+          "salary": 5555,
+          "phone": "0947829245",
+          "idCard": "201605423",
+          "email": "đâsda",
+          "address": "fasfasda423423",
+          "position": {
+            "id": 4,
+            "name": "Monitor"
+          },
+          "division": {
+            "id": 3,
+            "name": "Service"
+          },
+          "education": {
+            "id": 3,
+            "name": "University"
+          }
+        },
+        "service": {
+          "id": 7,
+          "code": "DV-0002",
+          "name": "House with Pool",
+          "area": 300,
+          "numberFloor": 2,
+          "maxPeople": "20",
+          "cost": "300000",
+          "rentType": {
+            "id": 2,
+            "name": "House",
+            "price": 300000
+          },
+          "status": "1"
+        },
+        "startDate": "2021-12-18",
+        "endDate": "2021-12-25",
+        "deposit": 500000,
+        "total": ""
+      },
+      "attachService": {
+        "id": 3,
+        "name": "Food",
+        "price": "300000",
+        "unit": 1,
+        "status": 1
+      },
+      "quantity": 5
     }
   ],
   "contractList": [
@@ -478,6 +548,65 @@
       "endDate": "2021-12-29",
       "deposit": "",
       "total": ""
+    },
+    {
+      "id": 4,
+      "customer": {
+        "id": 1,
+        "code": "KH-0001",
+        "type": {
+          "id": 3,
+          "type": "Gold"
+        },
+        "name": "Nguyễn Hoàng Thắng",
+        "birthday": "2000-02-02",
+        "idCard": "201605626",
+        "phone": "0947829245",
+        "email": "tan@gmail.com",
+        "address": "Da Nangvcxvxc"
+      },
+      "employee": {
+        "id": 4,
+        "code": "NV-0001",
+        "name": "Nguyễn An",
+        "birthday": "2021-12-08",
+        "salary": 5555,
+        "phone": "0947829245",
+        "idCard": "201605423",
+        "email": "đâsda",
+        "address": "fasfasda423423",
+        "position": {
+          "id": 4,
+          "name": "Monitor"
+        },
+        "division": {
+          "id": 3,
+          "name": "Service"
+        },
+        "education": {
+          "id": 3,
+          "name": "University"
+        }
+      },
+      "service": {
+        "id": 7,
+        "code": "DV-0002",
+        "name": "House with Pool",
+        "area": 300,
+        "numberFloor": 2,
+        "maxPeople": "20",
+        "cost": "300000",
+        "rentType": {
+          "id": 2,
+          "name": "House",
+          "price": 300000
+        },
+        "status": "1"
+      },
+      "startDate": "2021-12-18",
+      "endDate": "2021-12-25",
+      "deposit": 500000,
+      "total": ""
     }
   ],
   "serviceList": [
@@ -547,17 +676,17 @@
       "id": 1,
       "code": "KH-0001",
       "type": {
-        "id": 3,
-        "type": "Gold"
+        "id": 1,
+        "type": "Diamond"
       },
-      "name": "Nguyễn Hoàng Thắng",
+      "name": "Lê Bình",
       "birthday": "2000-02-02",
       "idCard": "201605626",
       "phone": "0947829245",
       "email": "tan@gmail.com",
       "address": "Da Nangvcxvxc"
-    },
-    {
+    }
+    ,{
       "id": 2,
       "code": "KH-0001",
       "type": {
@@ -573,17 +702,31 @@
     },
     {
       "id": 3,
-      "code": "đâs",
+      "code": "KH-0001",
       "type": {
-        "id": 5,
-        "type": "Member"
+        "id": 1,
+        "type": "Diamond"
       },
-      "name": "ađâs",
-      "birthday": "2021-12-15",
-      "idCard": "đâs",
-      "phone": "sadas",
-      "email": "asdasd@gmail.com",
-      "address": "đâs"
+      "name": "Lê Bình",
+      "birthday": "2000-02-02",
+      "idCard": "201605626",
+      "phone": "0947829245",
+      "email": "tan@gmail.com",
+      "address": "Da Nangvcxvxc"
+    },
+    {
+      "id": 4,
+      "code": "KH-0001",
+      "type": {
+        "id": 1,
+        "type": "Diamond"
+      },
+      "name": "Lê Bình",
+      "birthday": "2000-02-02",
+      "idCard": "201605626",
+      "phone": "0947829245",
+      "email": "tan@gmail.com",
+      "address": "Da Nangvcxvxc"
     }
   ]
 }

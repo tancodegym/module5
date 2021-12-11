@@ -11,12 +11,20 @@ import {HttpClientModule} from "@angular/common/http";
 import {EmployeeModule} from "./employee/employee.module";
 import {OfficeModule} from "./office/office.module";
 import {NgxPaginationModule} from "ngx-pagination";
+import {ContractComponent} from "./contract/contract.component";
+import {ContractModule} from "./contract/contract.module";
+import { ContractDetailComponent } from './contract-detail/contract-detail.component';
+import {ContractDetailModule} from "./contract-detail/contract-detail.module";
+import { CustomerUsingComponent } from './customer-using/customer-using.component';
+import {CustomerUsingModule} from "./customer-using/customer-using.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     HomeComponent,
+    ContractDetailComponent,
+    CustomerUsingComponent,
 
   ],
   imports: [
@@ -28,7 +36,10 @@ import {NgxPaginationModule} from "ngx-pagination";
     HttpClientModule,
     EmployeeModule,
     OfficeModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ContractModule,
+    ContractDetailModule,
+    CustomerUsingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

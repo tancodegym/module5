@@ -75,6 +75,7 @@ export class EmployeeComponent implements OnInit {
     division: new FormControl(''),
     education: new FormControl('')
   });
+  p: number=1;
   comparePosition(c1: Position, c2: Position): boolean {
     return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }

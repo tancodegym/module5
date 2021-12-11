@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.css']
 })
-export class CustomerComponent implements OnInit,DoCheck {
+export class CustomerComponent implements OnInit {
   customerList: Customer[] = [];
   idCus: number;
   typeList: CustomerType[];
@@ -96,13 +96,6 @@ export class CustomerComponent implements OnInit,DoCheck {
 
     );
 
-
-
-  }
-  ngDoCheck(): void {
-    // this.customerService.getAll().subscribe(customers=>{
-    //   this.customerList= customers ;
-    // });
   }
 
   trackId(id: any) {
@@ -156,6 +149,7 @@ export class CustomerComponent implements OnInit,DoCheck {
     this.customerSearch = this.cusSearchForm.value;
     this.customerService.search(this.customerSearch).subscribe( customers=>{
       this.customerList= customers ;
+      console.log(this.customerList);
       }
     )
   }

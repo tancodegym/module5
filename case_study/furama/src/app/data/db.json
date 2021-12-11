@@ -194,6 +194,196 @@
       "name": "Postgraduate"
     }
   ],
+  "attachServiceList": [
+    {
+      "id": 1,
+      "name": "Massage",
+      "price": "500000",
+      "unit": 1,
+      "status": 1
+    },
+    {
+      "id": 2,
+      "name": "Karaoke",
+      "price": "400000",
+      "unit": 1,
+      "status": 0
+    },
+    {
+      "id": 3,
+      "name": "Food",
+      "price": "300000",
+      "unit": 1,
+      "status": 1
+    },
+    {
+      "id": 4,
+      "name": "Water",
+      "price": "200000",
+      "unit": 1,
+      "status": 1
+    },
+    {
+      "id": 5,
+      "name": "Rent Car",
+      "price": "100000",
+      "unit": 1,
+      "status": 0
+    }
+  ],
+  "contractDetailList": [
+    {
+      "id": 1,
+      "contract": {
+        "id": 1,
+        "customer": {
+          "id": 1,
+          "code": "KH-0001",
+          "type": {
+            "id": 3,
+            "type": "Gold"
+          },
+          "name": "Lê Bình Bình",
+          "birthday": "2000-02-02",
+          "idCard": "201605626",
+          "phone": "0947829245",
+          "email": "tan@gmail.com",
+          "address": "Da Nangvcxvxc"
+        },
+        "employee": {
+          "id": 2,
+          "code": "NV-0002",
+          "name": "Nguyễn Bình",
+          "birthday": "2021-12-08",
+          "salary": 5555,
+          "phone": "0947829245",
+          "idCard": "201605423",
+          "email": "đâsda",
+          "address": "fasfasda",
+          "position": {
+            "id": 2,
+            "name": "Staff"
+          },
+          "division": {
+            "id": 1,
+            "name": "Sale-Marketing"
+          },
+          "education": {
+            "id": 1,
+            "name": "Intermediate"
+          }
+        },
+        "service": {
+          "id": 5,
+          "code": "123",
+          "name": "12312",
+          "area": 3112,
+          "numberFloor": 3123,
+          "maxPeople": "123123",
+          "cost": "123",
+          "rentType": {
+            "id": 1,
+            "name": "Villa",
+            "price": 500000
+          },
+          "status": "0"
+        },
+        "startDate": "",
+        "endDate": "",
+        "deposit": 500,
+        "total": ""
+      },
+      "attachService": {
+        "id": 1,
+        "name": "Massage",
+        "price": "500000",
+        "unit": 1,
+        "status": 1
+      },
+      "quantity": 5
+    }
+  ],
+  "contractList": [
+    {
+      "id": 1,
+      "customer": {
+        "id": 1,
+        "code": "KH-0001",
+        "type": {
+          "id": 3,
+          "type": "Gold"
+        },
+        "name": "Lê Bình Bình",
+        "birthday": "2000-02-02",
+        "idCard": "201605626",
+        "phone": "0947829245",
+        "email": "tan@gmail.com",
+        "address": "Da Nangvcxvxc"
+      },
+      "employee": {
+        "id": 2,
+        "code": "NV-0002",
+        "name": "Nguyễn Bình",
+        "birthday": "2021-12-08",
+        "salary": 5555,
+        "phone": "0947829245",
+        "idCard": "201605423",
+        "email": "đâsda",
+        "address": "fasfasda",
+        "position": {
+          "id": 2,
+          "name": "Staff"
+        },
+        "division": {
+          "id": 1,
+          "name": "Sale-Marketing"
+        },
+        "education": {
+          "id": 1,
+          "name": "Intermediate"
+        }
+      },
+      "service": {
+        "id": 5,
+        "code": "123",
+        "name": "12312",
+        "area": 3112,
+        "numberFloor": 3123,
+        "maxPeople": "123123",
+        "cost": "123",
+        "rentType": {
+          "id": 1,
+          "name": "Villa",
+          "price": 500000
+        },
+        "status": "0"
+      },
+      "startDate": "",
+      "endDate": "",
+      "deposit": 500,
+      "total": ""
+    },
+    {
+      "id": 2,
+      "customer": "",
+      "employee": "",
+      "service": "",
+      "startDate": "",
+      "endDate": "",
+      "deposit": "",
+      "total": ""
+    },
+    {
+      "id": 3,
+      "customer": "",
+      "employee": "",
+      "service": "",
+      "startDate": "2021-12-02",
+      "endDate": "2021-12-29",
+      "deposit": "",
+      "total": ""
+    }
+  ],
   "serviceList": [
     {
       "id": 5,

@@ -1,20 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { OfficeRoutingModule } from './office-routing.module';
-import { OfficeComponent } from './office.component';
+import { ContractDetailRoutingModule } from './contract-detail-routing.module';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgxPaginationModule} from "ngx-pagination";
 
 
 @NgModule({
-  declarations: [OfficeComponent],
+  declarations: [],
   imports: [
     CommonModule,
-    OfficeRoutingModule,
-    ReactiveFormsModule,
+    ContractDetailRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     NgxPaginationModule
   ]
 })
-export class OfficeModule { }
+export class ContractDetailModule { }

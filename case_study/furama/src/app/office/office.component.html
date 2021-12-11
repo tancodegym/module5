@@ -40,7 +40,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let ser of serviceList;index as i">
+        <tr *ngFor="let ser of serviceList| paginate: { itemsPerPage: 1, currentPage: p };index as i">
           <td>{{ser.id}}</td>
           <td>{{ser.code}}</td>
           <td>{{ser.name}}</td>
@@ -76,16 +76,6 @@
     </div>
     <div class="row">
       <div class="col-6">
-        <!--        <nav aria-label="Page navigation example">-->
-        <!--          <ul class="pagination">-->
-        <!--            <li class="page-item"><a class="page-link"  th:if="${customerList.hasPrevious()}" th:href="@{'/customer'(page=${customerList.number - 1})}">Previous</a></li>-->
-        <!--            <li class="page-item"><a class="page-link" th:href="@{'/customer'(page=${customerList.number })}"><span th:text="${customerList.number + 1}"></span>/<span th:text="${customerList.totalPages +1}"></span></a></li>-->
-        <!--            <li class="page-item"><a class="page-link"  th:href="@{'/customer'(page=${customerList.number +1 })}"><span  th:text="${customerList.number + 2}"></span></a></li>-->
-        <!--            <li class="page-item"><a class="page-link" th:href="@{'/customer'(page=${customerList.number +2 })}"><span  th:text="${customerList.number + 3}"></span></a></li>-->
-        <!--            <li class="page-item"><a class="page-link" th:href="@{'/customer'(page=${customerList.number + 1})}">Next</a></li>-->
-        <!--            <li class="page-item"><a class="page-link" th:href="@{'/customer'(page=${customerList.totalPages})}">Last Page</a></li>-->
-        <!--          </ul>-->
-        <!--        </nav>-->
       </div>
       <div class="col-6 text-right">
         <a class="nav-link">
@@ -98,7 +88,7 @@
     </div>
   </div>
 </div>
-
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
 
 <!-- Modal Create -->
 <div class="modal fade" id="mdCreate" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">

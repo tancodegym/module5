@@ -59,6 +59,7 @@ export class OfficeComponent implements OnInit {
     rentType: new FormControl(''),
     status: new FormControl('')
   });
+  p: number=1;
 
   compareRentType(c1: RentType, c2: RentType): boolean {
     console.log(c1.name);

@@ -174,6 +174,102 @@
         "id": 3,
         "name": "University"
       }
+    },
+    {
+      "id": 6,
+      "code": "",
+      "name": "",
+      "birthday": "2021-12-02",
+      "salary": "",
+      "phone": "",
+      "idCard": "",
+      "email": "",
+      "address": "",
+      "position": "",
+      "division": "",
+      "education": ""
+    },
+    {
+      "id": 7,
+      "code": "",
+      "name": "",
+      "birthday": "",
+      "salary": "",
+      "phone": "",
+      "idCard": "",
+      "email": "",
+      "address": "",
+      "position": "",
+      "division": "",
+      "education": {
+        "id": 3,
+        "name": "University"
+      }
+    },
+    {
+      "id": 8,
+      "code": "",
+      "name": "",
+      "birthday": "",
+      "salary": "",
+      "phone": "",
+      "idCard": "",
+      "email": "123123123",
+      "address": "",
+      "position": "",
+      "division": "",
+      "education": ""
+    },
+    {
+      "id": 9,
+      "code": "",
+      "name": "",
+      "birthday": "",
+      "salary": "",
+      "phone": "",
+      "idCard": "",
+      "email": "",
+      "address": "",
+      "position": "",
+      "division": {
+        "id": 2,
+        "name": "Administrative"
+      },
+      "education": ""
+    },
+    {
+      "id": 10,
+      "code": "",
+      "name": "",
+      "birthday": "",
+      "salary": "",
+      "phone": "",
+      "idCard": "",
+      "email": "",
+      "address": "",
+      "position": "",
+      "division": "",
+      "education": {
+        "id": 3,
+        "name": "University"
+      }
+    },
+    {
+      "id": 11,
+      "code": "",
+      "name": "",
+      "birthday": "",
+      "salary": "",
+      "phone": "",
+      "idCard": "",
+      "email": "",
+      "address": "",
+      "position": "",
+      "division": "",
+      "education": {
+        "id": 3,
+        "name": "University"
+      }
     }
   ],
   "educationList": [
@@ -402,33 +498,48 @@
     },
     {
       "id": 6,
-      "code": "",
-      "name": "",
-      "area": "",
-      "numberFloor": "",
-      "maxPeople": "",
-      "cost": "",
+      "code": "DV-0001",
+      "name": "Villa VIP",
+      "area": 500,
+      "numberFloor": 3,
+      "maxPeople": "25",
+      "cost": "500000",
       "rentType": {
-        "id": 3,
-        "name": "Room",
-        "price": 100000
+        "id": 1,
+        "name": "Villa",
+        "price": 500000
       },
       "status": "1"
     },
     {
       "id": 7,
-      "code": "",
-      "name": "",
-      "area": "",
-      "numberFloor": "",
-      "maxPeople": "",
-      "cost": "",
+      "code": "DV-0002",
+      "name": "House with Pool",
+      "area": 300,
+      "numberFloor": 2,
+      "maxPeople": "20",
+      "cost": "300000",
       "rentType": {
         "id": 2,
         "name": "House",
         "price": 300000
       },
-      "status": ""
+      "status": "1"
+    },
+    {
+      "id": 8,
+      "code": "DV-0003",
+      "name": "Room",
+      "area": 150,
+      "numberFloor": 1,
+      "maxPeople": "5",
+      "cost": "100000",
+      "rentType": {
+        "id": 3,
+        "name": "Room",
+        "price": 100000
+      },
+      "status": "0"
     }
   ],
   "customerList": [
@@ -439,7 +550,7 @@
         "id": 3,
         "type": "Gold"
       },
-      "name": "Lê Bình Bình",
+      "name": "Nguyễn Hoàng Thắng",
       "birthday": "2000-02-02",
       "idCard": "201605626",
       "phone": "0947829245",

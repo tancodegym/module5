@@ -33,7 +33,17 @@ export class CustomerServiceService {
   }
 
   search(customerSearch: Customer): Observable<Customer[]> {
-    console.log(customerSearch.code);
+    if(customerSearch.type==null){
+      return this.http.get<Customer[]>(API_URL+'/customerList'+'?'
+        +'&code_like='+customerSearch.code
+        +'&name_like='+customerSearch.name
+        +'&phone_like='+customerSearch.phone
+        +'&email_like='+customerSearch.email
+        +'&address_like='+customerSearch.address
+        +'&idCard_like='+customerSearch.idCard
+        +'&birthday_like='+customerSearch.birthday
+      );
+    }
     return this.http.get<Customer[]>(
       API_URL+'/customerList'+'?'
       + '&code_like='+customerSearch.code

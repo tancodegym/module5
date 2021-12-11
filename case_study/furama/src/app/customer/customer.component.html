@@ -40,7 +40,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let cus of customerList | paginate: { itemsPerPage: 1, currentPage: p };index as i">
+        <tr *ngFor="let cus of customerList | paginate: { itemsPerPage: 5, currentPage: p };index as i">
           <td>{{cus.id}}</td>
           <td>{{cus.code}}</td>
           <td>{{cus.name}}</td>
@@ -270,8 +270,7 @@
           <input class="form-control" type="text" formControlName="name" >
 
           <div>Customer Type</div>
-          <select formControlName="type" class="form-control" >
-            <option value="">--</option>
+          <select formControlName="type" class="form-control"  >
             <option *ngFor="let t of typeList" [ngValue]="t">{{t.type}}</option>
           </select>
 

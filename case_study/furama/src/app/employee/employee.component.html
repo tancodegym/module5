@@ -44,7 +44,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let emp of employeeList| paginate: { itemsPerPage: 1, currentPage: p };index as i">
+        <tr *ngFor="let emp of employeeList| paginate: { itemsPerPage: 5, currentPage: p };index as i">
           <td>{{emp.code}}</td>
           <td>{{emp.id}}</td>
           <td>{{emp.name}}</td>
@@ -207,17 +207,17 @@
           <input class="form-control" type="text" formControlName="address"><br>
           <div>Position</div>
           <select formControlName="position" class="form-control" [compareWith]="comparePosition" >
-            <option value="">--</option>
+            <option >--</option>
             <option *ngFor="let pos of positionList" [ngValue]="pos">{{pos.name}}</option>
           </select>
           <div>Division</div>
           <select formControlName="division" class="form-control" [compareWith]="compareDivision">
-            <option value="">--</option>
+            <option >--</option>
             <option *ngFor="let division of divisionList" [ngValue]="division">{{division.name}}</option>
           </select>
           <div>Education Degree</div>
           <select formControlName="education" class="form-control" [compareWith]="compareEducation">
-            <option value="">--</option>
+            <option >--</option>
             <option *ngFor="let education of educationList" [ngValue]="education">{{education.name}}</option>
           </select>
                 <div class="btnGroup">
@@ -233,54 +233,56 @@
 </div>
 
 <!-- Modal Search-->
-<!--<div class="modal fade" id="mdSearch" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">-->
-<!--  <div class="modal-dialog" role="document">-->
-<!--    <div class="modal-content">-->
-<!--      <div class="modal-header">-->
-<!--        <h5 class="modal-title" style="color: #b6d4fe">Find Customer</h5>-->
-<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--          <span aria-hidden="true">&times;</span>-->
-<!--        </button>-->
-<!--      </div>-->
-<!--      <div class="modal-body">-->
-<!--        <form [formGroup]="emp">-->
-<!--          <div>Customer Code</div>-->
-<!--          <input class="form-control" type="text" formControlName="code" >-->
-
-<!--          <div>Customer Name</div>-->
-<!--          <input class="form-control" type="text" formControlName="name" >-->
-
-<!--          <div>Customer Type</div>-->
-<!--          <select formControlName="type" class="form-control" >-->
-<!--            <option value="">&#45;&#45;</option>-->
-<!--            <option *ngFor="let t of typeList" [ngValue]="t">{{t.type}}</option>-->
-<!--          </select>-->
-
-<!--          <div>Date of Birth</div>-->
-<!--          <input class="form-control" type="date" formControlName="birthday" >-->
-
-<!--          <div>ID Card</div>-->
-<!--          <input class="form-control" type="text" formControlName="idCard" >-->
-
-<!--          <div>Phone Number</div>-->
-<!--          <input class="form-control" type="text" formControlName="phone" >-->
-
-<!--          <div>Email</div>-->
-<!--          <input class="form-control" type="text" formControlName="email" >-->
-<!--          <div>Address</div>-->
-<!--          <input class="form-control" type="text" formControlName="address" ><br>-->
-
-<!--          <div class="btnGroup">-->
-<!--            <button type="button" class="btn btnEdit btn-secondary" data-dismiss="modal">Close</button>-->
-<!--            <button type="button" (click)="search()" data-dismiss="modal"-->
-<!--                    class="btn btnEdit btn-primary">Find</button>-->
-<!--          </div>-->
-<!--        </form>-->
-<!--      </div>-->
-<!--      <div class="modal-footer">-->
-<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-<!--        <button type="button" class="btn btn-primary">Save</button>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
+<div class="modal fade" id="mdSearch" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="color: #b6d4fe">Find Customer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="empSearchForm">
+          <div>Customer Code</div>
+          <input class="form-control" type="text" formControlName="code">
+          <div>Customer Name</div>
+          <input class="form-control" type="text" formControlName="name">
+          <div>Date of Birth</div>
+          <input class="form-control" type="text" formControlName="birthday">
+          <div>Salary</div>
+          <input class="form-control" type="number" formControlName="salary">
+          <div>Phone Number</div>
+          <input class="form-control" type="text" formControlName="phone">
+          <div>ID Card</div>
+          <input class="form-control" type="text" formControlName="idCard">
+          <div>Email</div>
+          <input class="form-control" type="text" formControlName="email">
+          <div>Address</div>
+          <input class="form-control" type="text" formControlName="address"><br>
+          <div>Position</div>
+          <select formControlName="position" class="form-control" [compareWith]="comparePosition" >
+            <option value="">--</option>
+            <option *ngFor="let pos of positionList" [ngValue]="pos">{{pos.name}}</option>
+          </select>
+          <div>Division</div>
+          <select formControlName="division" class="form-control" [compareWith]="compareDivision">
+            <option value="">--</option>
+            <option *ngFor="let division of divisionList" [ngValue]="division">{{division.name}}</option>
+          </select>
+          <div>Education Degree</div>
+          <select formControlName="education" class="form-control" [compareWith]="compareEducation">
+            <option value="">--</option>
+            <option *ngFor="let education of educationList" [ngValue]="education">{{education.name}}</option>
+          </select>
+          <br>
+          <div class="btnGroup">
+            <button type="button" class="btn btnEdit btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" (click)="search()" data-dismiss="modal"
+                    class="btn btnEdit btn-primary">Find</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

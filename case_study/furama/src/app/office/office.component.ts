@@ -15,7 +15,7 @@ import {Education} from "../model/education";
 export class OfficeComponent implements OnInit {
   serviceList: Service[] = [];
   rentTypeList: RentType[] = [];
-
+  p: number=1;
   idService: number;
   ser:Service;
   constructor(
@@ -59,11 +59,19 @@ export class OfficeComponent implements OnInit {
     rentType: new FormControl(''),
     status: new FormControl('')
   });
-  p: number=1;
 
+  serviceSearchForm: FormGroup = new FormGroup({
+    id: new FormControl(''),
+    code: new FormControl(''),
+    name: new FormControl(''),
+    area: new FormControl(''),
+    numberFloor: new FormControl(''),
+    maxPeople: new FormControl(''),
+    cost: new FormControl(''),
+    rentType: new FormControl(''),
+    status: new FormControl('')
+  });
   compareRentType(c1: RentType, c2: RentType): boolean {
-    console.log(c1.name);
-    console.log(c2);
     return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
 
@@ -128,7 +136,12 @@ export class OfficeComponent implements OnInit {
     this.idService = 0;
     this.serviceEditForm.reset();
   }
-
+  serviceSearch:Service;
   search() {
+    this.serviceSearch = this.serviceSearchForm.value;
+    this.service.search(this.serviceSearch).subscribe( services=>{
+        this.serviceList= services ;
+      }
+    );
   }
 }

@@ -22,6 +22,7 @@ export class EmployeeComponent implements OnInit {
   divisionList: Division[] = [];
   idEmp: number;
   employee:Employee;
+  p: number=1;
   constructor(
     private employeeService: EmployeeService,
     private divisionService: DivisionService,
@@ -75,7 +76,21 @@ export class EmployeeComponent implements OnInit {
     division: new FormControl(''),
     education: new FormControl('')
   });
-  p: number=1;
+  empSearchForm: FormGroup = new FormGroup({
+    id: new FormControl(''),
+    code: new FormControl(''),
+    name: new FormControl(''),
+    birthday: new FormControl(''),
+    salary: new FormControl(''),
+    phone: new FormControl(''),
+    idCard: new FormControl(''),
+    email: new FormControl(''),
+    address: new FormControl(''),
+    position: new FormControl(''),
+    division: new FormControl(''),
+    education: new FormControl('')
+  });
+
   comparePosition(c1: Position, c2: Position): boolean {
     return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
@@ -83,8 +98,6 @@ export class EmployeeComponent implements OnInit {
     return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
   compareEducation(c1: Education, c2: Education): boolean {
-    console.log(c1.name);
-    console.log(c2.name);
     return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
   createEmployee() {
@@ -146,8 +159,14 @@ export class EmployeeComponent implements OnInit {
     this.idEmp = 0;
     this.empEditForm.reset();
   }
-
+  empSearch: Employee;
   search() {
+    this.empSearch = this.empSearchForm.value;
+    this.employeeService.search(this.empSearch).subscribe( employees=>{
+        this.employeeList= employees ;
+      }
+    );
+    // this.empSearchForm.reset();
   }
 
 

@@ -29,4 +29,27 @@ export class EmployeeService {
   deleteEmployee(id: number) {
     return this.http.delete<void>(API_URL+'/employeeList'+'/'+id);
   }
+
+  search(empSearch: Employee):Observable<Employee[]> {
+    let API = API_URL+'/employeeList'+'?'
+      +'&code_like='+empSearch.code
+      +'&name_like='+empSearch.name
+      +'&phone_like='+empSearch.phone
+      +'&email_like='+empSearch.email
+      +'&address_like='+empSearch.address
+      +'&idCard_like='+empSearch.idCard
+      +'&birthday_like='+empSearch.birthday
+      +'&salary_like='+empSearch.salary ;
+
+    if(empSearch.position.name != undefined){
+      API += '&position.id='+empSearch.position.id;
+    }
+    if(empSearch.division.name != undefined){
+      API+='&division.id='+empSearch.division.id;
+    }
+    if(empSearch.education.name != undefined){
+      API+='&education.id='+empSearch.education.id;
+    }
+   return this.http.get<Employee[]>(API);
+  }
 }

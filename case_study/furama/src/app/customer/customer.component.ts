@@ -54,14 +54,14 @@ export class CustomerComponent implements OnInit {
 
   cusSearchForm: FormGroup = new FormGroup(
     {
-      code: new FormControl(),
+      code: new FormControl(''),
       type: new FormControl(),
-      name: new FormControl(),
-      birthday: new FormControl(),
-      idCard: new FormControl(),
-      phone: new FormControl(),
-      email: new FormControl(),
-      address: new FormControl()
+      name: new FormControl(''),
+      birthday: new FormControl(''),
+      idCard: new FormControl(''),
+      phone: new FormControl(''),
+      email: new FormControl(''),
+      address: new FormControl('')
     }
   );
   customerSearch:Customer;
@@ -149,16 +149,11 @@ export class CustomerComponent implements OnInit {
     this.customerSearch = this.cusSearchForm.value;
     this.customerService.search(this.customerSearch).subscribe( customers=>{
       this.customerList= customers ;
-      console.log(this.customerList);
       }
-    )
+    );
+    this.cusSearchForm.reset();
   }
 
-  // ngAfterViewChecked(): void {
-  //   this.customerService.getAll().subscribe(customers=>{
-  //     this.customerList= customers ;
-  //   });
-  // }
   compareCustomerType(c1: CustomerType, c2:CustomerType ): boolean {
     return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }

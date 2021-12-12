@@ -11,11 +11,11 @@
       <div class="col-8 text-center">
       </div>
       <div class="col-2 text-right">
-        <a class="nav-link">
-          <button type="button" class="btn btn-outline-primary"
-                  data-toggle="modal" data-target="#mdSearch">Search <i class="fas fa-search"></i>
-          </button>
-        </a>
+        <!--        <a class="nav-link">-->
+        <!--          <button type="button" class="btn btn-outline-primary"-->
+        <!--                  data-toggle="modal" data-target="#mdSearch">Search <i class="fas fa-search"></i>-->
+        <!--          </button>-->
+        <!--        </a>-->
       </div>
     </div>
     <div class="row">
@@ -34,7 +34,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let contract of contractList | paginate: { itemsPerPage: 1, currentPage: p };index as i">
+        <tr *ngFor="let contract of contractList | paginate: { itemsPerPage: 5, currentPage: p };index as i">
           <td>{{contract.id}}</td>
           <td>{{contract.customer.name}}</td>
           <td>{{contract.employee.name}}</td>
@@ -75,26 +75,52 @@
             <option value="">--</option>
             <option *ngFor="let cus of customerList" [ngValue]="cus">{{cus.name}}</option>
           </select>
+          <div *ngIf="!customer.valid && (customer.pristine ||customer.dirty||customer.touched)">
+            <div style="color:red" [hidden]="!customer.errors.required">Customer is required !</div>
+          </div>
           <div>Employee</div>
           <select formControlName="employee" class="form-control">
             <option value="">--</option>
             <option *ngFor="let employee of employeeList" [ngValue]="employee">{{employee.name}}</option>
           </select>
+          <div *ngIf="!employee.valid && (employee.pristine ||employee.dirty||employee.touched)">
+            <div style="color:red" [hidden]="!employee.errors.required">Employee is required !</div>
+          </div>
           <div>Service</div>
           <select formControlName="service" class="form-control">
             <option value="">--</option>
-            <option *ngFor="let service of serviceList" [ngValue]="service">{{service.name}}</option>
+            <option *ngFor="let ser of serviceList" [ngValue]="ser">{{ser.name}}</option>
           </select>
+          <div *ngIf="!services.valid && (services.pristine ||services.dirty||services.touched)">
+            <div style="color:red" [hidden]="!services.errors.required">Employee is required !</div>
+          </div>
           <div>Start Day</div>
           <input class="form-control" type="date" formControlName="startDate">
-          <!--          <div *ngIf="!birthday.valid && (birthday.dirty ||birthday.touched)">-->
-          <!--            <div style="color:red" [hidden]="!birthday.errors.required">Date of Birth is required</div>-->
-          <!--            <div style="color:red" [hidden]="!birthday.errors.pattern">Wrong format Date ( Ex: dd-mm-yyyy)</div>-->
-          <!--          </div>-->
+          <div *ngIf="!startDate.valid && (startDate.pristine ||startDate.dirty||startDate.touched)">
+            <div style="color:red" [hidden]="!startDate.errors.required">Start Date is required !</div>
+            <div style="color:red" [hidden]="!startDate.errors.pattern">Wrong format Date ( Ex: dd-mm-yyyy) !</div>
+            <div style="color:red" [hidden]="!startDate.hasError('errFuture')">Start Date must be in future !</div>
+
+          </div>
           <div>End Day</div>
           <input class="form-control" type="date" formControlName="endDate">
+          <div *ngIf="!endDate.valid && (endDate.pristine ||endDate.dirty||endDate.touched)">
+            <div style="color:red" [hidden]="!endDate.errors.required">End Date is required !</div>
+            <div style="color:red" [hidden]="!endDate.errors.pattern">Wrong format Date ( Ex: dd-mm-yyyy) !</div>
+            <div style="color:red" [hidden]="!endDate.hasError('errFuture')">End Date must be in future !</div>
+
+          </div>
+          <div style="color:red" [hidden]="!contractForm.hasError('errStartEnd')">End Date must be in future
+            of start date !
+          </div>
           <div>Deposit</div>
           <input class="form-control" type="number" formControlName="deposit">
+          <div *ngIf="!deposit.valid && (deposit.pristine ||deposit.touched)">
+            <div style="color:red" [hidden]="!deposit.errors.required">Salary is required !</div>
+            <div style="color:red" [hidden]="!deposit.errors.pattern">Salary must be number !</div>
+            <div style="color:red" [hidden]="!deposit.hasError('errorNumber')">Deposit must be greater than 0 !
+            </div>
+          </div>
           <br>
           <div class="btnGroup">
             <button type="button" class="btn btnEdit btn-secondary" data-dismiss="modal">Close</button>

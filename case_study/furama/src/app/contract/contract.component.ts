@@ -8,8 +8,10 @@ import {CustomerServiceService} from "../service/customer-service.service";
 import {EmployeeService} from "../service/employee.service";
 import {ServiceService} from "../service/service.service";
 import {ContractService} from "../service/contract.service";
-import {FormControl, FormGroup} from "@angular/forms";
+import {AbstractControl, FormControl, FormGroup, RequiredValidator, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {addMonths, addYears, differenceInDays, differenceInMonths, differenceInYears} from "date-fns";
+
 
 @Component({
   selector: 'app-contract',
@@ -50,18 +52,19 @@ export class ContractComponent implements OnInit {
 
   contractForm: FormGroup = new FormGroup({
     id: new FormControl(''),
-    customer: new FormControl(''),
-    employee: new FormControl(''),
-    service: new FormControl(''),
-    startDate: new FormControl(''),
-    endDate: new FormControl(''),
-    deposit: new FormControl(''),
-    total: new FormControl(''),
-  });
-
+    customer: new FormControl('',[Validators.required]),
+    employee: new FormControl('',[Validators.required]),
+    service: new FormControl('',[Validators.required]),
+    startDate: new FormControl('',[this.validateFutureDate,Validators.required,Validators.pattern(/^(\d){4}-((0[1-9])|(1[0-2]))-((0[1-9])|(1[0-9])|(2[0-9])|(3[0-1]))$/)]),
+    endDate: new FormControl('',[this.validateFutureDate,Validators.required,Validators.pattern(/^(\d){4}-((0[1-9])|(1[0-2]))-((0[1-9])|(1[0-9])|(2[0-9])|(3[0-1]))$/)]),
+    deposit: new FormControl('',[Validators.required,Validators.pattern(/[0-9]+$/),this.validateNumber]),
+    total: new FormControl('',[Validators.required,Validators.pattern(/[0-9]+$/),this.validateNumber]),
+  },this.validStartEnd);
+  contract:Contract;
   createContract() {
-    let contract = this.contractForm.value;
-    this.contractService.createContract(contract).subscribe(next => {
+    this.contract = this.contractForm.value;
+    this.contract.total = this.getTotal(this.contract.service.id);
+    this.contractService.createContract(this.contract).subscribe(next => {
         this.router.navigateByUrl("/employee").then(e => {
           if (e) {
             this.router.navigateByUrl("/contract")
@@ -73,5 +76,70 @@ export class ContractComponent implements OnInit {
       }
     );
   }
+  getTotal(idService) {
+    let number =0;
+    for(let i=0;i<this.serviceList.length;i++){
+      if(this.serviceList[i].id===idService){
+        number = this.serviceList[i].cost;
+        break;
+      }
+    }
+  return number;
+  }
+    validateNumber(number:AbstractControl){
+    return (number.value>0)?null : {errorNumber:true};
+  }
+
+
+  validateFutureDate(contract:AbstractControl){
+    return isValidFuture(contract.value)? null: {errFuture:true};
+  }
+
+  validStartEnd(contract:AbstractControl){
+    console.log(isValidStartEnd(contract.value.startDate,contract.value.endDate))
+    return isValidStartEnd(contract.value.startDate,contract.value.endDate)?null :{errStartEnd:true};
+  }
+
+
+  get customer(){
+    return this.contractForm.get('customer');
+  }
+  get employee(){
+    return this.contractForm.get('employee');
+  }
+  get services(){
+    return this.contractForm.get('service');
+  }
+  get startDate(){
+    return this.contractForm.get('startDate');
+  }
+  get endDate(){
+    return this.contractForm.get('endDate');
+  }
+  get deposit(){
+    return this.contractForm.get('deposit');
+  }
+  get total(){
+    return this.contractForm.get('total');
+  }
 
 }
+function isValidFuture(date){
+  let newDate = new Date(date);
+  let now = new Date();
+  if(newDate<now){
+    return false;
+  }
+  return true;
+}
+function isValidStartEnd(startDate, endDate) {
+  let start = new Date(startDate);
+  let end = new Date(endDate);
+  console.log(start);
+  console.log(end);
+  if(end<start){
+    return false;
+  }
+  return true;
+}
+

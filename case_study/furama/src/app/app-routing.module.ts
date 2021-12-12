@@ -12,50 +12,40 @@ import {CustomerUsingComponent} from "./customer-using/customer-using.component"
 const routes: Routes = [
   {
     path: '',
-    component: MenuComponent,
-    children: [
-      {
-        path:'home',
-        component: HomeComponent
-      },
-      {
-      path: 'customer',
-      component: CustomerComponent
-      // loadChildren: () => import('./customer/customer.module').then(module => module.CustomerModule)
-    },
-      {
-        path: 'employee',
-        component: EmployeeComponent
-        // loadChildren: () => import('./customer/customer.module').then(module => module.CustomerModule)
-      },
-      {
-        path: 'service',
-        component: OfficeComponent
-        // loadChildren: () => import('./customer/customer.module').then(module => module.CustomerModule)
-      },
-      {
-        path: 'contract',
-        component: ContractComponent
-        // loadChildren: () => import('./customer/customer.module').then(module => module.CustomerModule)
-      },
-      {
-        path: 'contractDetail',
-        component: ContractDetailComponent
-        // loadChildren: () => import('./customer/customer.module').then(module => module.CustomerModule)
-      },
-      {
-        path: 'customerUsing',
-        component: CustomerUsingComponent
-        // loadChildren: () => import('./customer/customer.module').then(module => module.CustomerModule)
-      }
-     ]
+    component: HomeComponent,
+  },
+
+  {
+    path: 'customer',
+    component: CustomerComponent
+    // loadChildren: () => import('./customer/customer.module').then(module => module.CustomerModule)
+  },
+  {
+    path: 'employee',
+    component: EmployeeComponent
+    // loadChildren: () => import('./customer/customer.module').then(module => module.CustomerModule)
+  },
+  {
+    path: 'service',
+    component: OfficeComponent
+    // loadChildren: () => import('./customer/customer.module').then(module => module.CustomerModule)
+  },
+  {
+    path: 'contract',
+    component: ContractComponent
+    // loadChildren: () => import('./customer/customer.module').then(module => module.CustomerModule)
+  },
+  {
+    path: 'contractDetail',
+    component: ContractDetailComponent
+    // loadChildren: () => import('./customer/customer.module').then(module => module.CustomerModule)
+  },
+  {
+    path: 'customerUsing',
+    component: CustomerUsingComponent
+    // loadChildren: () => import('./customer/customer.module').then(module => module.CustomerModule)
   }
 
-  // },
-  // {
-  //   path: 'customer',
-  //
-  // }
 ];
 
 @NgModule({

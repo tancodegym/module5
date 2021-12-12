@@ -237,10 +237,10 @@ export class CustomerComponent implements OnInit {
   getAllId() {
     this.arrayDelAll=[];
     let checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+
     for (let i = 0; i < checkboxes.length; i++) {
       this.arrayDelAll.push(checkboxes[i].value);
     }
-    console.log(this.arrayDelAll);
   }
 
   clearArrayDel() {

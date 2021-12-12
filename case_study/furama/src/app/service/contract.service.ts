@@ -17,4 +17,10 @@ export class ContractService {
   createContract(contract):Observable<void>{
     return this.http.post<void>(API_URL+ '/contractList',contract);
   }
+  findById(id:number):Observable<Contract> {
+    return this.http.get<Contract>(API_URL+'/contractList/'+id);
+  }
+  updateContract(contract:Contract):Observable<void>{
+    return this.http.patch<void>(API_URL+'/contractList/'+contract.id,contract);
+  }
 }

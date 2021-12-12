@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Contract} from "../model/contract";
 import {AttachService} from "../model/attach-service";
 import {ContractService} from "../service/contract.service";
@@ -14,18 +14,18 @@ import {ContractDetail} from "../model/contract-detail";
   styleUrls: ['./contract-detail.component.css']
 })
 export class ContractDetailComponent implements OnInit {
-  contractList: Contract[]= [];
-  attachServiceList : AttachService[] =[];
-  contractDetailList:ContractDetail[]=[];
-  p:number=1;
-
+  contractList: Contract[] = [];
+  attachServiceList: AttachService[] = [];
+  contractDetailList: ContractDetail[] = [];
+  p: number = 1;
 
   constructor(
     private contractService: ContractService,
-    private attachService:AttachServiceService,
+    private attachService: AttachServiceService,
     private contractDetailService: ContractDetailService,
     private router: Router
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.contractService.getAll().subscribe(contracts => {
@@ -34,28 +34,41 @@ export class ContractDetailComponent implements OnInit {
     this.contractDetailService.getAll().subscribe(contractDetails => {
       this.contractDetailList = contractDetails;
     });
-    this.attachService.getAll().subscribe( attachServices =>{
-      this.attachServiceList = attachServices;
+    this.attachService.getAll().subscribe(attachServices => {
+        this.attachServiceList = attachServices;
       }
     );
   }
+
   contractDetailForm: FormGroup = new FormGroup({
     id: new FormControl(''),
     contract: new FormControl(''),
     attachService: new FormControl(''),
     quantity: new FormControl(''),
   });
+
+
+  ctDetail: ContractDetail;
+  newContract: Contract;
+
   createContractDetail() {
-    let contractDetail = this.contractDetailForm.value;
-    this.contractDetailService.createContractDetail(contractDetail).subscribe(next => {
-        this.router.navigateByUrl("/employee").then(e => {
-          if (e) {
-            this.router.navigateByUrl("/contractDetail")
+    this.ctDetail = this.contractDetailForm.value;
+    let costDetail = this.ctDetail.quantity * this.ctDetail.attachService.price;
+    this.contractService.findById(Number(this.ctDetail.contract.id)).subscribe(
+      value => {
+        this.newContract = value;
+        this.newContract.total += Number(costDetail);
+        this.ctDetail.contract = this.newContract;
+        this.contractService.updateContract(this.newContract).subscribe();
+        this.contractDetailService.createContractDetail(this.ctDetail).subscribe(next => {
+            this.router.navigateByUrl("/employee").then(e => {
+              if (e) {
+                this.router.navigateByUrl("/contractDetail")
+              }
+            })
           }
-        })
+        );
       }
     );
   }
-
-
 }

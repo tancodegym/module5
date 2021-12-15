@@ -47,12 +47,12 @@ export class CustomerUsingComponent implements OnInit {
   }
 
   private detail() {
+    this.attachDetailList=[];
     for(let i=0;i<this.contractDetailList.length;i++){
       if(this.contractDetailList[i].contract.id===this.idContract){
        this.attachDetailList.push(this.contractDetailList[i]);
       }
     }
-
 }
 
   clear() {

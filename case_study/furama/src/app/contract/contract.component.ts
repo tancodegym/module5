@@ -55,8 +55,9 @@ export class ContractComponent implements OnInit {
     customer: new FormControl('',[Validators.required]),
     employee: new FormControl('',[Validators.required]),
     service: new FormControl('',[Validators.required]),
-    startDate: new FormControl('',[this.validateFutureDate,Validators.required,Validators.pattern(/^(\d){4}-((0[1-9])|(1[0-2]))-((0[1-9])|(1[0-9])|(2[0-9])|(3[0-1]))$/)]),
-    endDate: new FormControl('',[this.validateFutureDate,Validators.required,Validators.pattern(/^(\d){4}-((0[1-9])|(1[0-2]))-((0[1-9])|(1[0-9])|(2[0-9])|(3[0-1]))$/)]),
+    startDate: new FormControl('',[this.validateFutureDate,Validators.required,
+      Validators.pattern(/^(\d){4}-((0[1-9])|(1[0-2]))-((0[1-9])|(1[0-9])|(2[0-9])|(3[0-1]))$/)]),
+    endDate: new FormControl('',[Validators.required,Validators.pattern(/^(\d){4}-((0[1-9])|(1[0-2]))-((0[1-9])|(1[0-9])|(2[0-9])|(3[0-1]))$/)]),
     deposit: new FormControl('',[Validators.required,Validators.pattern(/[0-9]+$/),this.validateNumber]),
     total: new FormControl('',[Validators.required,Validators.pattern(/[0-9]+$/),this.validateNumber]),
   },this.validStartEnd);

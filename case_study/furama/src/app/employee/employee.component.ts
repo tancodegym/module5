@@ -261,7 +261,7 @@ export class EmployeeComponent implements OnInit {
     let checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
 
     for (let i = 0; i < checkboxes.length; i++) {
-      this.arrayDelAll.push(checkboxes[i].value);
+      // this.arrayDelAll.push(checkboxes[i].value);
     }
   }
 

@@ -1,0 +1,236 @@
+{
+  "carList": [
+    {
+      "id": 121,
+      "typeCar": "0",
+      "houseCarName": {
+        "id": 2,
+        "name": "Hoàng Long"
+      },
+      "diemDi": {
+        "id": 4,
+        "name": "Huế"
+      },
+      "diemDen": {
+        "id": 1,
+        "name": "Đà Nẵng"
+      },
+      "phone": "0900123456",
+      "email": "hoanglong@gmail.com",
+      "gioDi": "05:02",
+      "gioDen": "15:04"
+    },
+    {
+      "id": 222,
+      "typeCar": "0",
+      "houseCarName": {
+        "id": 1,
+        "name": "Mai Linh"
+      },
+      "diemDi": {
+        "id": 2,
+        "name": "Quảng Bình"
+      },
+      "diemDen": {
+        "id": 3,
+        "name": "Hà Nội"
+      },
+      "phone": "0937829245",
+      "email": "tan123ran@gmail.com",
+      "gioDi": "05:05",
+      "gioDen": "17:00"
+    },
+    {
+      "id": 300,
+      "typeCar": "1",
+      "houseCarName": {
+        "id": 2,
+        "name": "Hoàng Long"
+      },
+      "diemDi": {
+        "id": 1,
+        "name": "Đà Nẵng"
+      },
+      "diemDen": {
+        "id": 2,
+        "name": "Quảng Bình"
+      },
+      "phone": "0977829245",
+      "email": "tantran@gmail.com",
+      "gioDi": "03:00",
+      "gioDen": "17:00"
+    },
+    {
+      "id": 455,
+      "typeCar": "0",
+      "houseCarName": {
+        "id": 3,
+        "name": "Phương Trang"
+      },
+      "diemDi": {
+        "id": 3,
+        "name": "Hà Nội"
+      },
+      "diemDen": {
+        "id": 4,
+        "name": "Huế"
+      },
+      "phone": "0971111111",
+      "email": "trangphuong@gmail.com",
+      "gioDi": "06:03",
+      "gioDen": "17:00"
+    },
+    {
+      "id": 599,
+      "typeCar": "0",
+      "houseCarName": {
+        "id": 1,
+        "name": "Mai Linh"
+      },
+      "diemDi": {
+        "id": 3,
+        "name": "Hà Nội"
+      },
+      "diemDen": {
+        "id": 4,
+        "name": "Huế"
+      },
+      "phone": "0971111111",
+      "email": "mailinh599@gmail.com",
+      "gioDi": "06:03",
+      "gioDen": "17:00"
+    },
+    {
+      "id": 666,
+      "typeCar": "1",
+      "houseCarName": {
+        "id": 3,
+        "name": "Phương Trang"
+      },
+      "diemDi": {
+        "id": 3,
+        "name": "Hà Nội"
+      },
+      "diemDen": {
+        "id": 4,
+        "name": "Huế"
+      },
+      "phone": "0971111111",
+      "email": "trangphuong@gmail.com",
+      "gioDi": "06:03",
+      "gioDen": "17:00"
+    },
+    {
+      "id": 777,
+      "typeCar": "1",
+      "houseCarName": {
+        "id": 3,
+        "name": "Phương Trang"
+      },
+      "diemDi": {
+        "id": 3,
+        "name": "Hà Nội"
+      },
+      "diemDen": {
+        "id": 4,
+        "name": "Huế"
+      },
+      "phone": "0971111111",
+      "email": "trangphuong@gmail.com",
+      "gioDi": "06:03",
+      "gioDen": "17:00"
+    },
+    {
+      "id": 999,
+      "typeCar": "1",
+      "houseCarName": {
+        "id": 3,
+        "name": "Phương Trang"
+      },
+      "diemDi": {
+        "id": 3,
+        "name": "Hà Nội"
+      },
+      "diemDen": {
+        "id": 4,
+        "name": "Huế"
+      },
+      "phone": "0971111111",
+      "email": "trangphuong@gmail.com",
+      "gioDi": "06:03",
+      "gioDen": "17:00"
+    },
+    {
+      "id": 1255,
+      "typeCar": "1",
+      "houseCarName": {
+        "id": 3,
+        "name": "Phương Trang"
+      },
+      "diemDi": {
+        "id": 3,
+        "name": "Hà Nội"
+      },
+      "diemDen": {
+        "id": 4,
+        "name": "Huế"
+      },
+      "phone": "0971111111",
+      "email": "trangphuong@gmail.com",
+      "gioDi": "06:03",
+      "gioDen": "17:00"
+    },
+    {
+      "id": 2567,
+      "typeCar": "1",
+      "houseCarName": {
+        "id": 3,
+        "name": "Phương Trang"
+      },
+      "diemDi": {
+        "id": 3,
+        "name": "Hà Nội"
+      },
+      "diemDen": {
+        "id": 4,
+        "name": "Huế"
+      },
+      "phone": "0971111111",
+      "email": "trangphuong@gmail.com",
+      "gioDi": "06:03",
+      "gioDen": "17:00"
+    }
+  ],
+  "houseCarList": [
+    {
+      "id": 1,
+      "name": "Mai Linh"
+    },
+    {
+      "id": 2,
+      "name": "Hoàng Long"
+    },
+    {
+      "id": 3,
+      "name": "Phương Trang"
+    }
+  ],
+  "countryList": [
+    {
+      "id": 1,
+      "name": "Đà Nẵng"
+    },
+    {
+      "id": 2,
+      "name": "Quảng Bình"
+    },
+    {
+      "id": 3,
+      "name": "Hà Nội"
+    },
+    {
+      "id": 4,
+      "name": "Huế"
+    }
+  ]
+}

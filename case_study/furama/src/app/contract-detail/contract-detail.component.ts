@@ -57,7 +57,9 @@ export class ContractDetailComponent implements OnInit {
     this.contractService.findById(Number(this.ctDetail.contract.id)).subscribe(
       value => {
         this.newContract = value;
-        this.newContract.total += Number(costDetail);
+        let total = Number(this.newContract.total);
+        total+= Number(costDetail);
+        this.newContract.total=total;
         this.ctDetail.contract = this.newContract;
         this.contractService.updateContract(this.newContract).subscribe();
         this.contractDetailService.createContractDetail(this.ctDetail).subscribe(next => {

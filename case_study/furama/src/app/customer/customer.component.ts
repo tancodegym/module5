@@ -72,6 +72,7 @@ export class CustomerComponent implements OnInit {
     this.customerService.getAll().subscribe(customers => {
       this.customerList = customers;
     });
+
   }
 
   createCustomer() {
@@ -239,7 +240,7 @@ export class CustomerComponent implements OnInit {
     let checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
 
     for (let i = 0; i < checkboxes.length; i++) {
-      this.arrayDelAll.push(checkboxes[i].value);
+      // this.arrayDelAll.push(checkboxes[i].value);
     }
   }
 
@@ -330,3 +331,4 @@ function getDiffToNow(diff: string | number | Date): string {
 
   return result.join(' ');
 }
+

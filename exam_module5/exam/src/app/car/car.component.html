@@ -1,0 +1,165 @@
+<div class="row bg-primary" >
+  <div class="col-12 text-center" >
+    <h2>Quản Lý Xe Khách</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-1 text-center"></div>
+  <div class="col-11">
+
+    <table class="text-cente table table-striped table-inverse table-responsive">
+      <thead class="thead-inverse">
+      <tr class="bg-warning r">
+        <th>Số Xe</th>
+        <th>Loại Xe</th>
+        <th>Tên Nhà Xe</th>
+        <th>Điểm Đi</th>
+        <th>Điểm Đến</th>
+        <th>Số Điện Thoại</th>
+        <th>Thư Điện Tử</th>
+        <th>Giờ Đi</th>
+        <th>Giờ Đến</th>
+        <th class="text-center">Sửa</th>
+        <th class="text-center">Xóa</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let car of carList  | paginate: { itemsPerPage: 8, currentPage: page }">
+        <td scope="row">{{car.id}}</td>
+        <td>
+        <span *ngIf="car.typeCar==0">Giường Nằm</span>
+        <span *ngIf="car.typeCar==1">Ghế Ngồi</span>
+        </td>
+        <td>{{car.houseCarName.name}}</td>
+        <td>{{car.diemDi.name}}</td>
+        <td>{{car.diemDen.name}}</td>
+        <td>{{car.phone}}</td>
+        <td>{{car.email}}</td>
+        <td>{{car.gioDi}}</td>
+        <td>{{car.gioDen}}</td>
+        <td>
+          <a>
+            <!-- Button trigger modal Edit -->
+            <button value="{{car.id}}" #idEdit (click)="trackIdEdit(idEdit.value)" type="button"
+                    class="btn btn-outline-primary" data-toggle="modal" data-target="#mdEdit">
+              Sửa <i class="far fa-edit"></i>
+            </button>
+          </a></td>
+        <td>
+          <button value="{{car.id}}" #idDel (click)="trackIdDel(idDel.value)" type="button"
+                  class="btn btn-outline-danger" data-toggle="modal" data-target="#mdDel">
+            Xóa <i class="fas fa-trash-alt"></i>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  </div>
+</div>
+
+<!-- Modal Delete -->
+<div class="modal fade" id="mdDel" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-danger">Xóa thông tin xe khách</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span data-dismiss="modal" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Bạn có muốn xóa thông tin của xe khách có số xe "{{idDel}}" ra khỏi danh sách quản lý ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+        <button (click)="deleteCar()" data-dismiss="modal" type="button" class="btn btn-danger">Xóa</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Edit -->
+<div class="modal fade" id="mdEdit" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-primary">Chỉnh sửa thông tin xe khách</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="carForm">
+          <div class="text-center">Số Xe: "{{carForm.value.id}}"</div>
+          <div>Loại Xe</div>
+          <div class="ipGroup">
+           <input style="margin-left: 100px" type="radio" class="inputStatus" formControlName="typeCar" value="0">Giường Nằm
+            <input style="margin-left: 80px" type="radio" class="inputStatus" formControlName="typeCar" value="1">Ghế Ngồi
+          </div>
+          <div *ngIf="!typeCar.valid && (typeCar.dirty ||typeCar.touched)">
+            <div style="color:red" [hidden]="!typeCar.errors.required">Loại xe không được để trống !</div>
+          </div>
+          <div>Tên Nhà Xe</div>
+          <select [compareWith]="compareHouseCar" formControlName="houseCarName" class="form-control">
+            <option value="">--</option>
+            <option *ngFor="let houseCar of houseCarList" [ngValue]="houseCar">{{houseCar.name}}</option>
+          </select>
+          <div *ngIf="!houseCarName.valid && (houseCarName.dirty ||houseCarName.touched)">
+            <div style="color:red" [hidden]="!houseCarName.errors.required">Tên Nhà Xe không được để trống !</div>
+          </div>
+          <div>Điểm Đi</div>
+          <select [compareWith]="compareCountry" formControlName="diemDi" class="form-control">
+            <option value="">--</option>
+            <option *ngFor="let diemDi of countryList" [ngValue]="diemDi">{{diemDi.name}}</option>
+          </select>
+          <div *ngIf="!diemDi.valid && (diemDi.dirty ||diemDi.touched)">
+            <div style="color:red" [hidden]="!diemDi.errors.required">Điểm đi không được để trống !</div>
+          </div>
+          <div>Điểm Đến</div>
+          <select [compareWith]="compareCountry" formControlName="diemDen" class="form-control">
+            <option value="">--</option>
+            <option *ngFor="let diemden of countryList" [ngValue]="diemden">{{diemden.name}}</option>
+          </select>
+          <div *ngIf="!diemDen.valid && (diemDen.dirty ||diemDen.touched)">
+            <div style="color:red" [hidden]="!diemDen.errors.required">Điểm đến không được để trống !</div>
+          </div>
+          <div>Số điện thoại</div>
+          <input class="form-control" type="text" formControlName="phone">
+          <div *ngIf="!phone.valid && (phone.dirty ||phone.touched)">
+            <div style="color:red" [hidden]="!phone.errors.required">Số điện thoại không được để trống !</div>
+            <div style="color:red" [hidden]="!phone.errors.pattern">Số điện thoại phải bắt đầu bằng 090 hoặc 093 hoặc 097 và có 10 số!</div>
+          </div>
+          <div>Email</div>
+          <input class="form-control" type="text" formControlName="email">
+          <div *ngIf="!email.valid && (email.dirty ||email.touched)">
+            <div style="color:red" [hidden]="!email.errors.required">Email không được để trống !</div>
+          </div>
+          <div>Giờ đi</div>
+          <input class="form-control" type="time" formControlName="gioDi">
+          <div *ngIf="!gioDi.valid && (gioDi.dirty ||gioDi.touched)">
+            <div style="color:red" [hidden]="!gioDi.errors.required">Giờ đi không được để trống !</div>
+            <div style="color:red" [hidden]="!gioDi.errors.pattern">Giờ đi phải phải theo định dạng hh:mm.</div>
+          </div>
+
+          <div>Giờ đến</div>
+          <input class="form-control" type="time" formControlName="gioDen">
+          <div *ngIf="!gioDen.valid && (gioDen.dirty ||gioDen.touched)">
+            <div style="color:red" [hidden]="!gioDen.errors.required">Giờ đến không được để trống !</div>
+            <div style="color:red" [hidden]="!gioDi.errors.pattern">Giờ đến phải phải theo định dạng hh:mm.</div>
+          </div>
+          <div style="color:red" [hidden]="!carForm.hasError('errTime')">Giờ đến và giờ đi luôn luôn lớn hơn
+            5:00 và nhỏ hơn 23:00
+          </div>
+          <br>
+          <div class="btnGroup">
+            <button type="button" class="btn btnEdit btn-secondary" data-dismiss="modal">Quay về</button>
+            <button type="button" (click)="updateCar()" data-dismiss="modal" [disabled]="!carForm.valid"
+                    class="btn btnEdit btn-primary">Sửa
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

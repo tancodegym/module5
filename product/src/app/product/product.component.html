@@ -1,0 +1,196 @@
+<div class="row">
+  <div class="col-12">
+
+    <!-- Button trigger modal Create -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
+      Add Product
+    </button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Producer</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Detail</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let p of productList">
+        <td scope="row">{{p.id}}</td>
+        <td>{{p.name}}</td>
+        <td>{{p.price}}</td>
+        <td>{{p.producer.name}}</td>
+        <td>
+          <!-- Button trigger modal  Edit-->
+          <button (click)="getIdEdit(p)" type="button" class="btn btn-primary btn-lg" data-toggle="modal"
+                  data-target="#mdEdit">
+            Edit
+          </button>
+        </td>
+        <td>
+          <!-- Button trigger Delete -->
+          <button (click)="getIdDel(p.id)" type="button" class="btn btn-danger btn-lg" data-toggle="modal"
+                  data-target="#mdDel">
+            Delete
+          </button>
+        </td>
+        <td>
+          <!-- Button trigger modal Detail -->
+          <button (click)="detail(p.id)" type="button" class="btn btn-primary btn-lg" data-toggle="modal"
+                  data-target="#mdDetail">
+            Detail
+          </button>
+        </td>
+
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+
+<!-- Modal create-->
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="productForm">
+          <div>Name Product</div>
+          <input type="text" formControlName="name">
+
+          <div>Price</div>
+          <input type="text" formControlName="price">
+
+          <div>Producer</div>
+          <select formControlName="producer">
+            <option value=""></option>
+            <option *ngFor="let producer of producerList" [ngValue]="producer">{{producer.name}}</option>
+          </select>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button (click)="createProduct()" type="button" class="btn btn-primary" data-dismiss="modal">Create</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<!-- Modal Edit -->
+<div class="modal fade" id="mdEdit" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="productEditForm">
+          <span>Edit product with id: {{productEditForm.value.id}} !</span>
+          <input type="hidden" formControlName="id">
+          <div>Name Product</div>
+          <input type="text" formControlName="name">
+
+          <div>Price</div>
+          <input type="text" formControlName="price">
+
+          <div>Producer</div>
+          <select formControlName="producer" [compareWith]="compareProducer">
+            <option value=""></option>
+            <option *ngFor="let producer of producerList" [ngValue]="producer">{{producer.name}}</option>
+          </select>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button (click)="updateProduct()" type="button" class="btn btn-primary" data-dismiss="modal">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Detail -->
+<div class="modal fade" id="mdDetail" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Product Detail</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="detailForm">
+          <span>Detail product with id: {{detailForm.value.id}} !</span>
+          <input formControlName="id" readonly>
+          <div>Name Product</div>
+          <input type="text" formControlName="name" readonly>
+
+          <div>Price</div>
+          <input type="text" formControlName="price" readonly>
+
+          <div>Producer</div>
+          <select formControlName="producer" [compareWith]="compareProducer" readonly>
+            <option value=""></option>
+            <option *ngFor="let producer of producerList" [ngValue]="producer">{{producer.name}}</option>
+          </select>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Delete -->
+<div class="modal fade" id="mdDel" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Bạn có muốn xóa product có id {{idDel}} không?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button (click)="delete()" type="button" data-dismiss="modal" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

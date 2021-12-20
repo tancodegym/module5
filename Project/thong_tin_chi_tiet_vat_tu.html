@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Product Management</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <!--  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto%7CVarela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet prefetch"
+          href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+    <!--        <link rel="stylesheet" href="thong_tin_chi_tiet_vat_tu.css" type="text/css">-->
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        li:hover{
+            background: red;
+        }
+        li{
+            align-items: center;
+            color: white;
+            margin-left: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row" style="background-color: whitesmoke;">
+        <div class="col-1"></div>
+        <div class="col-2">(+84)913379559</div>
+        <div class="col-3">Email: info@codegym.vn</div>
+        <div class="col-3"></div>
+        <div class="col-3">
+            <input type="text" placeholder="Search...." />
+        </div>
+        <hr />
+    </div>
+    <div class="row" style="background-color: ghostwhite;">
+        <div class="col-1"></div>
+        <div class="col-2"><img src="https://i.imgur.com/Cn2aedI.png" height="72" width="191"></div>
+        <div class="col-6">
+            <marquee style="font-size: x-large; color: #058af0; font-family: sans-serif;">
+                CÙNG TẠO CƠ HỘI THÀNH CÔNG - HƯỚNG TỚI SỨC KHỎE CỘNG ĐỒNG</marquee
+            >
+        </div>
+        <div class="col-3">
+            <button class="btn btn-primary btn-success">
+                <i class="fas fa-mobile-alt"> 0913379559</i>
+            </button>
+            <i style="font-size: x-large;" class="fas fa-shopping-cart"></i>
+        </div>
+    </div>
+    <div class="row" style="background-color: #058af0;">
+        <div class="col-12">
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #058af0;">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#" >Trang Chủ
+                                <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" >Giới thiệu</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                               >
+                                Sản Phẩm
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  ><span>CHỨNG CHỈ CHẤT
+                                LƯỢNG</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  >HOẠT ĐỘNG CÔNG
+                                TY</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  >ĐỐI TÁC</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  >LIÊN HỆ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  >LOGIN</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="row" style="padding-left: 0;left: 0">
+        <div class="col-9">
+            <div class="row">
+                <div class="col-6">
+                    <img src="https://i.imgur.com/0GH8A4D.jpg" height="100%" width="100%"/>
+                </div>
+                <div class="col-6">
+                    <h3 style="color: green">KHẨU TRANG THƯỜNG 3 & 4 LỚP</h3>
+                    <ul>
+                        <li><b>Thanh nẹp mũi: </b><span>Nhựa PE</span></li>
+                        <li><b>Dây đeo tai: </b><span>Polyester and Spandex</span></li>
+                        <li><b>Kiểu dây đeo: </b><span>Vải dệt kim có tính đàn hồi</span></li>
+                    </ul>
+
+                    <span style="font-size: 30px;color: lightskyblue">
+               <i class="fab fa-facebook-f"></i>
+                <i style="margin-left: 10px" class="fab fa-twitter"></i>
+                <i style="margin-left: 10px" class="fab fa-google"></i>
+               <i style="margin-left: 10px" class="fas fa-envelope-square"></i>
+                <i style="margin-left: 10px" class="fab fa-linkedin-in"></i>
+                </span>
+                    <a class="btn btn-primary btn-block"
+                       style="text-decoration: none; font-size: 30px">Thêm vào giỏ hàng <i class="fas fa-cart-plus"></i></a>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <img src="https://i.imgur.com/0GH8A4D.jpg" height="100px" width="100px"/>
+                    <img src="https://i.imgur.com/0GH8A4D.jpg" height="100px" width="100px"/>
+                </div>
+            </div>
+            <br>
+            <div class="row" style=" overflow: hidden; object-fit: cover">
+                <div class="col-2" style="margin-left: 5px;background-color: green;border-radius: 15px;color: white"><h3
+                        style=" text-align: center;padding-top: 5px;">MÔ TẢ</h3></div>
+                <div class="col-10"></div>
+            </div>
+            <div class="row" style="background-color: lightcyan">
+                <div class="col-12">
+                    <b>* Giới thiệu: </b><span>Khẩu trang y tế có thiết kế hình chữ nhật với thanh nẹp mũi có thể điều chỉnh
+            và 2 dây đeo tai, mỗi phía 1 dây, được thế kế đảm bảo che kín mũi miệng.</span><br>
+                    <b>* Thông tin kĩ thuật:</b><br>
+                    <b>- Kết cấu:</b><br>
+                    <b>- Khẩu trang 3 lớp:</b><br>
+                    <p>+ Vật liệu bên ngoài: Vải không dệt PP</p>
+                    <p>+ Lớp vi lọc: Vải lọc kháng khuẩn PP</p>
+                    <p>+ Lớp trong: Vải không dệt PP</p>
+                    <b>- Khẩu trang 4 lớp:</b><br>
+                    <p>+ Vật liệu bên ngoài: Vải không dệt PP</p>
+                    <p>+ Lớp vi lọc: Vải lọc kháng khuẩn PP</p>
+                    <p>+ Lớp giữa: Vải không dệt PP</p>
+                    <p>+ Lớp trong: Vải không dệt PP</p>
+                    <b>- Thanh nẹp mũi:</b><span>Nhựa PE</span><br>
+                    <b>- Dây đeo tai:</b><span>Polyester and Spandex</span><br>
+                    <b>- Kiểu dây đeo:</b><span>Vải dệt kim có tính đàn hồi</span><br>
+                    <b>- Kích thước:</b><br>
+                    <b>- Phần khẩu trang:</b><br>
+                    <p>+ Dài: 175mm</p>
+                    <p>+ Rộng: 95mm</p>
+                    <b>- Độ dài dây đeo:</b><span>165mm</span><br>
+                    <b>- Độ dài thanh nẹp mũi:</b><span>105mm</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-3" style="right: 0">
+            <div class="row" style="background: gray; height: 200px;text-align: center">
+                <div class="col-12"><h3>Sản phẩm nổi bật</h3></div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <button class="btn btn-primary">Giỏ hàng <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="footer" style="background-color: #058af0;">
+        <div class="col-4" style="text-align: justify">
+            <span style="font-weight: bold; color: white;">CTY TNHH TBYT - DƯỢC CODEGYM</span>
+            <br>
+            <br>
+            <span style="color: white">Chúng tôi tin tưởng rằng, với năng lực, sự năng động, sáng tạo, trách nhiệm cao của đội ngũ cán bộ ở đây. Công ty sẽ luôn đáp ứng được các hợp
+    đồng thương mại trong nước và xuất khẩu ra thị trường thế giới, đáp ứng các hợp đồng dịch vụ kỹ thuật y tế đối khách hàng (cơ sở y tế công lập và tư nhân, trong nước và nước ngoài).
+  </span></div>
+        <div class="col-4" style="text-align: justify;color: white">
+            <span style="font-weight: bold;">LIÊN HỆ:</span>
+            <br>
+            <br>
+            <span style="font-weight: bold;">Trụ sở:</span>
+            <span>Tầng 3, Tòa nhà Đức Ân, Số 01, Đường Trần Hưng Học, Phường Lê Mao, TP. Vinh, Nghệ An, Việt Nam</span>
+            <br>
+            <span style="font-weight: bold;">Chi nhánh 1:</span>
+            <span>Số 5, - Tân Phú - Đại Lộ Lê Nin - Thành Phố Vinh - Nghệ An</span>
+            <br>
+            <span style="font-weight: bold;">Chi nhánh 2:</span>
+            <span>402 Tòa nhà CT2 Vimeco Nguyễn Chánh, Trung Hòa, Cầu Giấy, TP. Hà Nội, Việt Nam</span>
+            <br>
+            <span style="font-weight: bold;">Chi nhánh 3:</span>
+            <span>618A Trần Đại NGhĩa, Phường Tân Tạo A, Quận Bình Tân, TP. Hồ Chí Minh, Việt Nam</span>
+            <br>
+            <span style="font-weight: bold;">Hotline:</span>
+            <span>0913379559</span>
+            <br>
+            <span style="font-weight: bold;">Điện thoại:</span>
+            <span>023.88.98.58.58</span>
+            <br>
+            <span style="font-weight: bold;">Email:</span>
+            <span>info@codegym.vn</span>
+        </div>
+        <div class="col-4" style="text-align: justify;">
+            <span style="font-weight: bold;color: white ">DANH MỤC SẢN PHẨM</span>
+            <br>
+            <br>
+            <span><a style="color: white" href="#">Sản phẩm chăm sóc sức khỏe</a></span>
+            <br>
+            <span><a style="color: white" href="#">Thiết bị bảo hộ y tế</a></span>
+            <br>
+            <span><a style="color: white" href="#">Thiết bị y tế & vật tư tiêu hao</a></span>
+        </div>
+    </div>
+</div>
+<div class="row" id="copyright">
+    <div class="col-4" style="text-align: justify">
+        <span>COPYRIGHT<i class="fa fa-copyright" aria-hidden="true">2021 CODEGYM.VN</i></span></div>
+    <div class="col-4"></div>
+    <div class="col-4">
+        <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.google.com/"><i class="fab fa-google-plus-g"></i></a>
+        <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+    </div>
+</div>
+</div>
+
+</body>
+</html>

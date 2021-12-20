@@ -1,0 +1,9 @@
+<div>
+  <span>ID: {{product.id}}</span>
+  <img src="{{product.image}}" class="card-img-top" alt="" height="200px" width="200px">
+  <span>Price: {{product.price}}</span>
+  <a class="card-title">Name: {{product.name}}</a>
+  <span>Decription: {{product.description}}</span>
+        <a (click)="addToCart(product.id)" class="btn btn-primary btn-block"
+           style="text-decoration: none">Add To Cart</a>
+</div>

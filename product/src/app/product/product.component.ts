@@ -51,7 +51,9 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.productService.getPage(this.page).subscribe(value => {
       console.log(value);
+
       this.productList =value.content;
+      this.totalPage = value.totalPages;
     });
     this.productService.getProducerList().subscribe(value => {
       this.producerList = value;
@@ -113,4 +115,18 @@ export class ProductComponent implements OnInit {
   }
 
 
+  addPage() {
+    this.page +=1;
+    this.ngOnInit();
+  }
+
+  decreasePage() {
+    this.page -=1;
+    this.ngOnInit();
+  }
+
+  lastPage() {
+    this.page=this.totalPage-1;
+    this.ngOnInit();
+  }
 }

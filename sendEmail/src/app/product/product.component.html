@@ -1,0 +1,13 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="card shadow" *ngFor="let product of productList">
+
+        <span>ID: {{product.id}}</span>
+        <img (click)="detail(product.id)" src="{{product.image}}" class="card-img-top" alt="" height="320" width="100%">
+        <span>Price: {{product.price}}</span>
+        <a class="card-title">Name: {{product.name}}</a>
+        <!--      <a class="btn btn-primary btn-block"-->
+        <!--         style="text-decoration: none">Add To Cart</a>-->
+    </div>
+  </div>
+</div>
